@@ -904,7 +904,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 572211362}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182840921}
+        m_TargetAssemblyTypeName: UpgradePanelManager, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &572211362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1917,7 +1929,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1531758468}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182840921}
+        m_TargetAssemblyTypeName: UpgradePanelManager, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1531758468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2263,7 +2287,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1686458934}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182840921}
+        m_TargetAssemblyTypeName: UpgradePanelManager, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1686458934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2760,7 +2796,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43739a706a0c30f4d81c60416021b0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrades: []
+  upgrades:
+  - {fileID: 11400000, guid: 1f1a77355e1b7d2439a2e987db04b7a8, type: 2}
+  - {fileID: 11400000, guid: 44f5dc9d87c74244992c648ec09f6159, type: 2}
+  - {fileID: 11400000, guid: 1acb269932f8b434b8a488bb9801b7ce, type: 2}
   upgradePanel: {fileID: 182840921}
   levelTesting: {fileID: 2366952045312849662}
 --- !u!1 &1912714751
@@ -3899,7 +3938,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7052327818535369513}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 182840921}
+        m_TargetAssemblyTypeName: UpgradePanelManager, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &3479113210919310166
 CanvasRenderer:
   m_ObjectHideFlags: 0
