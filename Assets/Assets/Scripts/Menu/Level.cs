@@ -21,6 +21,10 @@ public class Level : MonoBehaviour
 
     [SerializeField] UpgradePanelManager upgradePanel;
     [SerializeField] LevelTesting levelTesting;
+
+    List<UpgradeData> selectedUpgrades;
+    List<UpgradeData> acquiredUpgrades;
+
     private void Start()
     {
         levelTesting.SetLevelText(level);
@@ -42,7 +46,11 @@ public class Level : MonoBehaviour
 
     private void LevelUp()
     {
-        upgradePanel.OpenPanel(GetUpgrades(4));
+        if (selectedUpgrades == null) { selectedUpgrades = new List<UpgradeData>(); }
+        selectedUpgrades.Clear();
+        selectedUpgrades.AddRange(GetUpgrades(4));
+
+        upgradePanel.OpenPanel(selectedUpgrades);
         experience -= TO_LEVEL_UP;
         level += 1;
         levelTesting.SetLevelText(level);
@@ -73,5 +81,15 @@ public class Level : MonoBehaviour
         }
         
         return upgradeList;
+    }
+
+    public void Upgrade(int selectedUpgradeId)
+    {
+        UpgradeData upgradeData = selectedUpgrades[selectedUpgradeId];
+
+        if(acquiredUpgrades == null) { acquiredUpgrades = new List<UpgradeData>(); }
+
+        acquiredUpgrades.Add(upgradeData);
+        upgrades.Remove(upgradeData);
     }
 }

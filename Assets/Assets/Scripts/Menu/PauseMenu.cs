@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject panel;
     PauseManager pauseManager;
+    [SerializeField] GameObject upgradePanel;
 
     private void Awake()
     {
@@ -14,16 +15,16 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(panel.activeInHierarchy == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && upgradePanel.activeInHierarchy == false)
+        {                        
+            if (panel.activeInHierarchy == false)
             {
                 OpenMenu();
             }
             else
             {
                 CloseMenu();
-            }
+            }            
         }        
     }
 
