@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
-public class PlayerMelee : WeaponController
-{
-    public float coneAngle = 30f;
-    public float coneRange = 15f;
-    
+public class MeleeTest : WeaponController
+{      
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -16,18 +14,23 @@ public class PlayerMelee : WeaponController
     protected override void Attack()
     {
         base.Attack();
-        Collider[] colliders = Physics.OverlapSphere(transform.position, coneAngle);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, weaponData.coneAngle);
 
         foreach (Collider collider in colliders)
         {
             Vector3 direction = collider.transform.position - transform.position;
             float angle = Vector3.Angle(transform.forward, direction);
-
-            if(angle <= coneAngle / 2)
+            if(angle <= weaponData.coneAngle / 2)
             {
                 if(collider.tag == "enemy")
                     Debug.Log("Hit " + collider.name);
             }
         }    
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, weaponData.coneAngle);
+    }
+
 }

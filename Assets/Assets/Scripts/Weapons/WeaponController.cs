@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    public GameObject prefab;
-    public float damage;
-    public float speed;
-    public int pierce;
-    public float cooldownDuration;
+    public WeaponSO weaponData;
     float currentCooldown;
     protected virtual void Start()
     {
-        currentCooldown = cooldownDuration;
+        currentCooldown = weaponData.cooldownDuration;
     }
 
     // Update is called once per frame
@@ -27,6 +23,6 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Attack()
     {
-        currentCooldown = cooldownDuration;
+        currentCooldown = weaponData.cooldownDuration;
     }
 }
