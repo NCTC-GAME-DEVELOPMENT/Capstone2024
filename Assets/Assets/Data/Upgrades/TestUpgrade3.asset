@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestUpgrade3
   m_EditorClassIdentifier: 
   upgradeType: 0
-  Name: 
+  Name: Test 3
   icon: {fileID: 0}
-  description: 
+  description: This is Test 3

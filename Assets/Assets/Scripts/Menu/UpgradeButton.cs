@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -17,5 +18,10 @@ public class UpgradeButton : MonoBehaviour
         upgradeData.name = upgradeData.name;
     }
 
-
+    internal void Clean()
+    {
+        icon.sprite = null;
+        upgradeName.text = null;
+        upgradeDescription.text = null;
+    }
 }
