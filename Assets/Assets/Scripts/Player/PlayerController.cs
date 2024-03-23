@@ -1,25 +1,47 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private InputHandler _input;
-
     [SerializeField] private new Camera camera;
+    [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private TrailRenderer trail;
 
-    [SerializeField] private float moveSpeed;
+    private Vector2 InputVector;
+    private Vector3 MousePosition;
 
-    private void Awake()
+    private int canDash = 1;
+    private bool dashing;
+    private float dashSpeed = 7.5f;
+    private float dashTime = 0.1f;
+    private float dashCooldown = 2.5f;
+
+    private void Start()
     {
-        _input = GetComponent<InputHandler>();
-    }
 
+    }
     private void Update()
     {
-        var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
+        if (dashing)
+            return;
+
+        var h = Input.GetAxis("Horizontal");
+        var v = Input.GetAxis("Vertical");
+
+        InputVector = new Vector2(h, v);
+
+        MousePosition = Input.mousePosition;
+
+        var targetVector = new Vector3(InputVector.x, 0, InputVector.y);
+
+        if (Input.GetKeyDown(KeyCode.Space) && canDash > 0)
+        {
+            StartCoroutine(Dash(targetVector));
+        }
 
         MovePlayer(targetVector);
         MouseRotate();
@@ -27,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void MouseRotate()
     {
-        Ray ray = camera.ScreenPointToRay(_input.MousePosition);
+        Ray ray = camera.ScreenPointToRay(MousePosition);
         if(Physics.Raycast(ray,out RaycastHit hitInfo, maxDistance: 300f))
         {
             var target = hitInfo.point;
@@ -45,4 +67,20 @@ public class PlayerController : MonoBehaviour
         var targetPosition = transform.position + targetVector * speed;
         transform.position = targetPosition;
     }
+
+    private IEnumerator Dash(Vector3 targetVector)
+    {
+        canDash--;
+        dashing = true;
+        targetVector = Quaternion.Euler(0, camera.gameObject.transform.eulerAngles.y, 0) * targetVector;
+        var targetPosition = transform.position + targetVector * dashSpeed;
+        transform.position = targetPosition;
+        trail.emitting = true;
+        yield return new WaitForSeconds(dashTime);
+        trail.emitting = false;
+        dashing = false;
+        yield return new WaitForSeconds(dashCooldown);
+        Debug.Log("Can Dash");
+        canDash++;
+    }    
 }
