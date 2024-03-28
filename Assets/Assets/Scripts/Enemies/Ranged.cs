@@ -46,7 +46,8 @@ public class Ranged : EnemyBase
         Vector3 lookAtDirection = playerTransform.position - transform.position;
         lookAtDirection.y = 0f;
         Quaternion targetRotation = Quaternion.LookRotation(lookAtDirection);
-        transform.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);    
+        transform.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
+        float distanceToPlayer = Vector3.Distance(playerTransform.position, transform.position);
         if (Time.time >= projectileCooldown)
         {
             GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
@@ -54,6 +55,10 @@ public class Ranged : EnemyBase
             Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
             projectileRigidbody.velocity = direction * projectileSpeed;
             projectileCooldown = Time.time + projectileInterval;
+        }
+        if (distanceToPlayer >= 17.5)
+        {
+            think = Chase;
         }
     }
 }
