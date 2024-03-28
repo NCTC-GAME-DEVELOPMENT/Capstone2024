@@ -38,6 +38,7 @@ public class TestProjectile : MonoBehaviour
         {
             PlayerController playerController = other.GetComponent<PlayerController>();
             playerController.TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }
