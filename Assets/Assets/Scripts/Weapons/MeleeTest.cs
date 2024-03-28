@@ -27,10 +27,4 @@ public class MeleeTest : WeaponController
             }
         }    
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, weaponData.coneAngle);
-    }
-
 }

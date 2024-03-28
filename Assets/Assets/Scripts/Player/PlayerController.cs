@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private TrailRenderer trail;
 
+    public float health = 100;
+
     private Vector2 InputVector;
     private Vector3 MousePosition;
 
@@ -82,5 +84,14 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         Debug.Log("Can Dash");
         canDash++;
-    }    
+    }
+    public void TakeDamage(float value)
+    {
+        health -= value;
+        Debug.Log(health);
+        if(health <= 0)
+        {
+            Debug.Log("Death");
+        }
+    }
 }
