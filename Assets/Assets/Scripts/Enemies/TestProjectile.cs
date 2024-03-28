@@ -7,7 +7,7 @@ using UnityEngine;
 public class TestProjectile : MonoBehaviour
 {
     private Camera mainCamera;
-    private float delay = 1f;
+    private float delay = 0.5f;
     private float damage = 5f;
     // Start is called before the first frame update
     void Start()
