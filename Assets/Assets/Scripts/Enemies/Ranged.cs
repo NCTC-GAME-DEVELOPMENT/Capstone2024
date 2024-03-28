@@ -43,7 +43,10 @@ public class Ranged : EnemyBase
 
     void Attack()
     {
-        transform.LookAt(playerTransform.position);
+        Vector3 lookAtDirection = playerTransform.position - transform.position;
+        lookAtDirection.y = 0f;
+        Quaternion targetRotation = Quaternion.LookRotation(lookAtDirection);
+        transform.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);    
         if (Time.time >= projectileCooldown)
         {
             GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
@@ -52,15 +55,5 @@ public class Ranged : EnemyBase
             projectileRigidbody.velocity = direction * projectileSpeed;
             projectileCooldown = Time.time + projectileInterval;
         }
-    }
-
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-    }
-
-    protected override void OnTriggerExit(Collider other)
-    {
-        base.OnTriggerExit(other);
     }
 }
