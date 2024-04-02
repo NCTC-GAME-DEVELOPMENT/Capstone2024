@@ -89,6 +89,22 @@ public class Level : MonoBehaviour
 
         if(acquiredUpgrades == null) { acquiredUpgrades = new List<UpgradeData>(); }
 
+        switch (upgradeData.upgradeType)
+        {
+            case UpgradeType.WeaponUpgrade:
+                break;
+            case UpgradeType.WeaponUnlock:
+                break;
+            case UpgradeType.ItemUpgrade: 
+                break;
+            case UpgradeType.ItemUnlock:
+                break;
+            case UpgradeType.SkillUpgrade:
+                break;
+            case UpgradeType.SkillUnlock:
+                break;
+        }
+
         acquiredUpgrades.Add(upgradeData);
         upgrades.Remove(upgradeData);
     }

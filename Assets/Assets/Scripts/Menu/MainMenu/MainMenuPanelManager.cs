@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuPanelManager : MonoBehaviour
 {
@@ -10,22 +11,25 @@ public class MainMenuPanelManager : MonoBehaviour
 
     public void StartButton()
     {
-        mainPanel.SetActive(false);
-        characterPanel.SetActive(true);
+        SceneManager.LoadScene("Main");
+        //mainPanel.SetActive(false);
+        //characterPanel.SetActive(true);
     }
 
-    
-    
+
+
     //character select menu
-    public void StartCharacterButton()
-    {
-        characterPanel.SetActive(false);
-        //move to level select
-    }
 
-    public void CharacterBackButton()
-    {
-        characterPanel.SetActive(false);
-        mainPanel.SetActive(true);        
-    }
+    //public void StartCharacterButton()
+    //{
+    //    characterPanel.SetActive(false);
+    //    //move to level select
+    //}
+
+    //public void CharacterBackButton()
+    //{
+    //    characterPanel.SetActive(false);
+    //    mainPanel.SetActive(true);
+    //}
+    
 }
