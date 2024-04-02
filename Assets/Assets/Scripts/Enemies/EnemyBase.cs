@@ -15,6 +15,7 @@ public class EnemyBase : MonoBehaviour
     protected float contactCooldown;
     public float contactInterval = 1f;
     public float contactDamage = 2.5f;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -37,6 +38,16 @@ public class EnemyBase : MonoBehaviour
     protected virtual void MoveToPlayer()
     {
         navMeshAgent.SetDestination(playerTransform.position);
+    }
+
+    public virtual void TakeDamage(float damage)
+    {
+        //TAKE DAMAGE
+    }
+    
+    public virtual void Death()
+    {
+        Destroy(gameObject);
     }
 
     protected virtual void OnTriggerEnter(Collider other)

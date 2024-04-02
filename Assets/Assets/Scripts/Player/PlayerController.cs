@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 InputVector;
     private Vector3 MousePosition;
+    private Rigidbody rb;
 
     private int canDash = 1;
     private bool dashing;
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
     }
     private void Update()
     {
@@ -92,6 +93,14 @@ public class PlayerController : MonoBehaviour
         if(health <= 0)
         {
             Debug.Log("Death");
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("collision"))
+        {
+            
         }
     }
 }
