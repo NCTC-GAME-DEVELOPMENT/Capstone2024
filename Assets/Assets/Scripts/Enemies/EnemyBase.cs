@@ -5,34 +5,40 @@ using UnityEngine.AI;
 
 public class EnemyBase : MonoBehaviour
 {
-    public NavMeshAgent navMeshAgent;
-
+    protected NavMeshAgent navMeshAgent;
     protected GameObject playerObj;
     protected Transform playerTransform;
     protected PlayerController playerController;
 
     protected bool contact = false;
     protected float contactCooldown;
-    public float contactInterval = 1f;
+    private float contactInterval = 1f;
     public float contactDamage = 2.5f;
 
+    protected delegate void ThinkFunction();
+    protected ThinkFunction think;
+
+    protected float health;
+
     // Start is called before the first frame update
-    protected virtual void Start()
+    private void Start()
+    {
+        InitializeObject();
+    }
+
+    protected virtual void InitializeObject()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        playerObj = GameObject.FindWithTag("Player");
-        playerTransform = playerObj.transform;
-        playerController = playerObj.GetComponent<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>();
+        playerTransform = playerController.transform;
+        think = MoveToPlayer;
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    private void Update()
     {
-        if (contact && Time.time >= contactCooldown)
-        {
-            playerController.TakeDamage(contactDamage);
-            contactCooldown = Time.time + contactInterval;
-        }
+        ContactDamage();
+        think?.Invoke();
     }
 
     protected virtual void MoveToPlayer()
@@ -40,9 +46,21 @@ public class EnemyBase : MonoBehaviour
         navMeshAgent.SetDestination(playerTransform.position);
     }
 
+    protected virtual void ContactDamage()
+    {
+        if (contact && Time.time >= contactCooldown)
+        {
+            playerController.TakeDamage(contactDamage);
+            contactCooldown = Time.time + contactInterval;
+        }
+    }    
+
     public virtual void TakeDamage(float damage)
     {
-        //TAKE DAMAGE
+        health -= damage;
+        Debug.Log("Crawler is at " + health + "HP");
+        if (health <= 0)
+            Death();
     }
     
     public virtual void Death()

@@ -9,26 +9,15 @@ public class Ranged : EnemyBase
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawnPoint;
 
-    public float health = 40;
     private float projectileCooldown;
     private float projectileInterval = 1;
     private float projectileSpeed = 10f;
 
-    public delegate void ThinkFunction();
-    ThinkFunction think;
-
-    // Start is called before the first frame update
-    protected override void Start()
+    protected override void InitializeObject()
     {
-        base.Start();
+        base.InitializeObject();
+        health = 40;
         think = Chase;
-    }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-        think?.Invoke();
     }
 
     void Chase()
@@ -61,13 +50,5 @@ public class Ranged : EnemyBase
         {
             think = Chase;
         }
-    }
-
-    public override void TakeDamage(float damage)
-    {
-        health -= damage;
-        Debug.Log("Ranged Enemy is at " + health + "HP");
-        if(health <= 0)
-            Death();
     }
 }
