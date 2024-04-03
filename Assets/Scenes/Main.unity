@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -178,8 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014b7848cb2e48f40bad3f792df8948f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 0}
-  contactInterval: 1
   contactDamage: 2.5
 --- !u!65 &100097992
 BoxCollider:
@@ -2741,6 +2739,7 @@ GameObject:
   - component: {fileID: 1868208260}
   - component: {fileID: 1868208263}
   - component: {fileID: 1868208264}
+  - component: {fileID: 1868208266}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2897,7 +2896,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1f1a77355e1b7d2439a2e987db04b7a8, type: 2}
   - {fileID: 11400000, guid: 44f5dc9d87c74244992c648ec09f6159, type: 2}
   - {fileID: 11400000, guid: 1acb269932f8b434b8a488bb9801b7ce, type: 2}
-  - {fileID: 11400000, guid: 00ba32fee81dc4346987fe73bfbddff7, type: 2}
+  - {fileID: 11400000, guid: c6f4df3c5bf5ecd4787aab8a8ad508c8, type: 2}
   upgradePanel: {fileID: 182840921}
   levelTesting: {fileID: 2366952045312849662}
 --- !u!114 &1868208264
@@ -3026,6 +3025,20 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 0
+--- !u!114 &1868208266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868208253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f356eb0c27271734f97e2a50c25dd732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponObjectsContainer: {fileID: 1006986850}
+  startingWeapon: {fileID: 11400000, guid: 74361de14201e0d4b8714ccb9a29994a, type: 2}
 --- !u!1 &1912714751
 GameObject:
   m_ObjectHideFlags: 0

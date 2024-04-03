@@ -4,7 +4,7 @@ using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class MeleeTest : WeaponController
-{      
+{
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -14,13 +14,13 @@ public class MeleeTest : WeaponController
     protected override void Attack()
     {
         base.Attack();
-        Collider[] colliders = Physics.OverlapSphere(transform.position, weaponData.coneAngle);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, weaponData.stats.coneAngle);
 
         foreach (Collider collider in colliders)
         {
             Vector3 direction = collider.transform.position - transform.position;
             float angle = Vector3.Angle(transform.forward, direction);
-            if(angle <= weaponData.coneAngle / 2)
+            if(angle <= weaponData.stats.coneAngle / 2)
             {
                 if(collider.tag == "enemy")
                     Debug.Log("Hit " + collider.name);
