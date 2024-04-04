@@ -15,10 +15,14 @@ public class EnemyBase : MonoBehaviour
     private float contactInterval = 1f;
     public float contactDamage = 2.5f;
 
+    public EnemyStatsRow[] StatsChart; 
+
     protected delegate void ThinkFunction();
     protected ThinkFunction think;
 
     protected float health;
+
+
 
     // Start is called before the first frame update
     private void Start()
