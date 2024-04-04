@@ -226,3 +226,88 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactDamage: 2.5
+  StatsChart:
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
+  - Level: 0
+    Health: 0
+    BaseDamage: 0
+    RangedDamage: 0
