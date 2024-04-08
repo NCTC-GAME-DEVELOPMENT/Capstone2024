@@ -7,22 +7,22 @@ public class EnemyBase : MonoBehaviour
 {
     protected NavMeshAgent navMeshAgent;
     protected GameObject playerObj;
-    protected Transform playerTransform;
     protected PlayerController playerController;
+    protected Timer timer;
 
+    protected bool boss = false;
+    protected int health;
+    public int damage;
+    protected int contactDamage;
     protected bool contact = false;
     protected float contactCooldown;
     private float contactInterval = 1f;
-    public float contactDamage = 2.5f;
 
+    protected int StatsChartRow;
     public EnemyStatsRow[] StatsChart; 
 
     protected delegate void ThinkFunction();
     protected ThinkFunction think;
-
-    protected float health;
-
-
 
     // Start is called before the first frame update
     private void Start()
@@ -33,8 +33,13 @@ public class EnemyBase : MonoBehaviour
     protected virtual void InitializeObject()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        timer = FindObjectOfType<Timer>();
+        StatsChartRow = timer.StatsChartRow;
         playerController = FindObjectOfType<PlayerController>();
-        playerTransform = playerController.transform;
+        playerObj = FindObjectOfType<PlayerController>().gameObject;
+        health = StatsChart[StatsChartRow].health;
+        contactDamage = StatsChart[StatsChartRow].contactDamage;
+        damage = StatsChart[StatsChartRow].damage;
         think = MoveToPlayer;
     }
 
@@ -43,11 +48,13 @@ public class EnemyBase : MonoBehaviour
     {
         ContactDamage();
         think?.Invoke();
+        if (timer.currentTime <= 1f && !boss)
+            Death();
     }
 
     protected virtual void MoveToPlayer()
     {
-        navMeshAgent.SetDestination(playerTransform.position);
+        navMeshAgent.SetDestination(playerObj.transform.position);
     }
 
     protected virtual void ContactDamage()
@@ -59,17 +66,18 @@ public class EnemyBase : MonoBehaviour
         }
     }    
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log("Crawler is at " + health + "HP");
+        Debug.Log("enemy is at " + health + "HP");
         if (health <= 0)
             Death();
     }
     
-    public virtual void Death()
+    protected virtual void Death()
     {
         Destroy(gameObject);
+        timer.HardModeAdjust(true);
     }
 
     protected virtual void OnTriggerEnter(Collider other)

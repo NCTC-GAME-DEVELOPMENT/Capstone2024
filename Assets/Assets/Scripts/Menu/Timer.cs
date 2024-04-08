@@ -6,53 +6,86 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public float totalTime = 1200f;
-    private float currentTime;
+    public float currentTime;
+    public float nextEvent;
+    private int eventCount = 0;
     private bool isTimerRunning = false;
-
     public TMP_Text timerText;
 
+    public GameObject[] enemyArray;
     public GameObject crawlerPrefab;
+    public GameObject slimePrefab;
     public GameObject rangedPrefab;
+    public GameObject bruiserPrefab;
+    public GameObject magePrefab;
+    public GameObject summoner;
+    public GameObject bossPrefab;
 
     public Transform[] spawnPoints;
     public float spawnTimer = 5f;
+
+    public int StatsChartRow = 0;
+
+    public bool hardMode = false;
+    public int hardModeLevel = 0;
+    public int hardModeReduction = 1;
+    public int hardModeGain = 1;
+    private float hardModeReductionTimer = 10f;
+    private float hardModeRecutionCheck;
 
     void Start()
     {
         ResetTimer();
         StartTimer();
+        enemyArray = new GameObject[1];
+        enemyArray[0] = crawlerPrefab;
+        hardModeRecutionCheck = hardModeReductionTimer;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+            currentTime -= 55;
+        if (Input.GetKeyDown(KeyCode.Y))
+            currentTime += 60;
+
         if (isTimerRunning)
         {
             currentTime -= Time.deltaTime;
             UpdateUIText();
 
-            if (currentTime <= 0f)
+            if (hardMode)
             {
-                ResetTimer();
-                StartTimer();
+                HardMode();
             }
+
+            if (currentTime <= 1f)
+            {
+                StopTimer();
+            }
+
+            if (currentTime <= nextEvent)
+                Event();
+
         }
     }
 
     public void StartTimer()
     {
         isTimerRunning = true;
-        InvokeRepeating("SpawnEnemy", 0f, spawnTimer);
+        InvokeRepeating(nameof(SpawnRandomEnemy), 0f, spawnTimer);
     }
 
     public void StopTimer()
     {
         isTimerRunning = false;
-        CancelInvoke("SpawnEnemy");
+        CancelInvoke(nameof(SpawnRandomEnemy));
     }
 
     public void ResetTimer()
     {
         currentTime = totalTime;
+        nextEvent = currentTime - 60;
         UpdateUIText();
     }
 
@@ -66,11 +99,68 @@ public class Timer : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
+    private void SpawnRandomEnemy()
     {
-        GameObject enemyPrefab = currentTime >= totalTime * 0.5f ? crawlerPrefab : rangedPrefab;
-        // Randomly select a spawn point from the array
+        GameObject enemyPrefab = enemyArray[Random.Range(0, enemyArray.Length)];
+
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(enemyPrefab, randomSpawnPoint.position, randomSpawnPoint.rotation);
+    }
+
+    private void SpawnEnemy(GameObject enemyPrefab)
+    {
+        Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Instantiate(enemyPrefab, randomSpawnPoint.position, randomSpawnPoint.rotation);
+    }
+
+    private void HardMode()
+    {
+        hardModeRecutionCheck -= Time.deltaTime;
+        if (hardModeRecutionCheck <= 0)
+        {
+            hardModeRecutionCheck = hardModeReductionTimer;
+            HardModeAdjust(false);
+        }
+    }
+
+    public void HardModeAdjust(bool impact)
+    {
+        if (impact)
+            hardModeLevel += hardModeGain;
+        if (!impact)
+            hardModeLevel -= hardModeReduction;
+        if (hardModeLevel <= 0)
+            hardModeLevel = 0;
+    }
+    private void Event()
+    {
+        StatsChartRow++;
+        eventCount++;
+        nextEvent = currentTime - 60;
+        if (eventCount == 1)
+            spawnTimer = 4f;
+        if (eventCount == 2)
+        {
+            enemyArray = new GameObject[3];
+            enemyArray[0] = crawlerPrefab;
+            enemyArray[1] = crawlerPrefab;
+            enemyArray[2] = slimePrefab;
+        }
+        if (eventCount == 3)
+        {
+            enemyArray = new GameObject[2];
+            enemyArray[0] = crawlerPrefab;
+            enemyArray[1] = slimePrefab;
+        }
+        if (eventCount == 4)
+            SpawnEnemy(bruiserPrefab);
+        if (eventCount == 5)
+        {
+            enemyArray = new GameObject[3];
+            enemyArray[0] = crawlerPrefab;
+            enemyArray[1] = slimePrefab;
+            enemyArray[2] = rangedPrefab;
+        }
+
     }
 }

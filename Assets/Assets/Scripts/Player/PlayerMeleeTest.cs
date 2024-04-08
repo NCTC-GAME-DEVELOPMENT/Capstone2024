@@ -9,20 +9,22 @@ public class PlayerMeleeTest : MonoBehaviour
     public bool HideTrigger = false;
 
     public float delay = 0.1f;
-    public float attackTime = 1f;
+    public float attackTime;
     public float timer;
-    public float damage = 5;
+    public int damage;
 
     public MeshRenderer MR;
-    public BoxCollider BC;
+    public MeshCollider MC;
 
     void Start()
     {
         MR = gameObject.GetComponent<MeshRenderer>();
-        BC = gameObject.GetComponent<BoxCollider>();
-        BC.enabled = false;
+        MC = gameObject.GetComponent<MeshCollider>();
+        MC.enabled = false;
         MR.enabled = false;
         timer = attackTime;
+        damage = 5;
+        attackTime = 1f;
     }
 
     // Update is called once per frame
@@ -38,12 +40,10 @@ public class PlayerMeleeTest : MonoBehaviour
     public void Attack()
     {
         if (timer > 0)
-        {
             return;
-            // Already Making an Attack 
-        }
+
         MR.enabled = true;
-        BC.enabled = true;
+        MC.enabled = true;
         timer = attackTime;
         StartCoroutine(Delay(delay));
     }
@@ -51,7 +51,7 @@ public class PlayerMeleeTest : MonoBehaviour
     public void DisableAttack()
     {
         MR.enabled = false;
-        BC.enabled = false;
+        MC.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)

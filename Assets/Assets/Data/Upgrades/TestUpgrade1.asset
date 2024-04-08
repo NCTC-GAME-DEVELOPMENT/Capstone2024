@@ -16,3 +16,4 @@ MonoBehaviour:
   Name: Test 1
   icon: {fileID: 0}
   description: This is Test 1
+  weaponData: {fileID: 0}

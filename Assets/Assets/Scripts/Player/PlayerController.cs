@@ -11,13 +11,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private TrailRenderer trail;
 
-    public float health = 100;
+    Timer timer;
+
+    public int health = 100;
 
     private Vector2 InputVector;
     private Vector3 MousePosition;
-    private Rigidbody rb;
 
-    private int canDash = 1;
+    private int canDash = 2;
     private bool dashing;
     private float dashSpeed = 7.5f;
     private float dashTime = 0.1f;
@@ -25,13 +26,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        timer = FindObjectOfType<Timer>();
     }
     private void Update()
     {
-        if (dashing)
-            return;
-
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 
@@ -40,6 +38,9 @@ public class PlayerController : MonoBehaviour
         MousePosition = Input.mousePosition;
 
         var targetVector = new Vector3(InputVector.x, 0, InputVector.y);
+
+        if (dashing)
+            return;
 
         if (Input.GetKeyDown(KeyCode.Space) && canDash > 0)
         {
@@ -64,9 +65,12 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer(Vector3 targetVector)
     {
+        targetVector.Normalize();
+
         var speed = moveSpeed * Time.deltaTime;
 
         targetVector = Quaternion.Euler(0, camera.gameObject.transform.eulerAngles.y, 0) * targetVector;
+
         var targetPosition = transform.position + targetVector * speed;
         transform.position = targetPosition;
     }
@@ -83,24 +87,17 @@ public class PlayerController : MonoBehaviour
         trail.emitting = false;
         dashing = false;
         yield return new WaitForSeconds(dashCooldown);
-        Debug.Log("Can Dash");
+        Debug.Log("Dash Charge");
         canDash++;
     }
-    public void TakeDamage(float value)
+    public void TakeDamage(int value)
     {
         health -= value;
-        Debug.Log(health);
+        timer.HardModeAdjust(false);
+        Debug.Log("Player Health Is " + health);
         if(health <= 0)
         {
             Debug.Log("Death");
-        }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("collision"))
-        {
-            
         }
     }
 }

@@ -8,6 +8,5 @@ public class Crawler : EnemyBase
     protected override void InitializeObject()
     {
         base.InitializeObject();
-        health = 25;
     }
 }
