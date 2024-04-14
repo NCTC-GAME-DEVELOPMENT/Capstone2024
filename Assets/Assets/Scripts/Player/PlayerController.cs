@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private new Camera camera;
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private TrailRenderer trail;
-
+    public Animator animator;
+    
     Timer timer;
 
     public int health = 100;
@@ -26,7 +27,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        camera = Camera.main;
+        animator = GetComponent<Animator>();
         timer = FindObjectOfType<Timer>();
+        trail = GetComponent<TrailRenderer>();
     }
     private void Update()
     {

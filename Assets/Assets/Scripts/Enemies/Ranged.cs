@@ -10,7 +10,7 @@ public class Ranged : EnemyBase
     [SerializeField] private Transform projectileSpawnPoint;
 
     private float projectileCooldown;
-    private float projectileInterval = 1;
+    private float projectileInterval = 1f;
     private float projectileSpeed = 10f;
 
     protected override void InitializeObject()
@@ -28,6 +28,7 @@ public class Ranged : EnemyBase
         {
             navMeshAgent.SetDestination(navMeshAgent.transform.position);
             think = Attack;
+            animator.SetTrigger("isAttacking");
         }
     }
 
@@ -54,6 +55,9 @@ public class Ranged : EnemyBase
             projectileCooldown = Time.time + projectileInterval;
         }
         if (distanceToPlayer >= 17.5)
+        {
             think = Chase;
+            animator.SetTrigger("isMoving");
+        }
     }
 }

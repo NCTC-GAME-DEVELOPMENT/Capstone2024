@@ -9,6 +9,7 @@ public class EnemyBase : MonoBehaviour
     protected GameObject playerObj;
     protected PlayerController playerController;
     protected Timer timer;
+    protected Animator animator;
 
     protected bool boss = false;
     protected int health;
@@ -34,6 +35,7 @@ public class EnemyBase : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         timer = FindObjectOfType<Timer>();
+        animator = GetComponent<Animator>();
         StatsChartRow = timer.StatsChartRow;
         playerController = FindObjectOfType<PlayerController>();
         playerObj = FindObjectOfType<PlayerController>().gameObject;
