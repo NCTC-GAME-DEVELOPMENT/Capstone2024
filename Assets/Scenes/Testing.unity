@@ -840,11 +840,10 @@ MonoBehaviour:
   timerText: {fileID: 1085958633}
   enemyArray: []
   crawlerPrefab: {fileID: 6467026621046783967, guid: 4dbdd01864e92fa4fa00813b6c590b0b, type: 3}
-  slimePrefab: {fileID: 3936258991585662759, guid: f53d2ee38f2f2a8428767c388c2ad505, type: 3}
+  slimePrefab: {fileID: 8842785992613927052, guid: f88a7fa64a5d92043af7ed4ccaee4f29, type: 3}
   rangedPrefab: {fileID: 3558172366977032371, guid: 025ff438083456a4b8aa157c3799e294, type: 3}
   bruiserPrefab: {fileID: 8433913220093282320, guid: 1f1b2666f8c728f4d88843f912d65dd7, type: 3}
   magePrefab: {fileID: 0}
-  summoner: {fileID: 0}
   bossPrefab: {fileID: 0}
   spawnPoints:
   - {fileID: 1437457991}

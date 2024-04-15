@@ -18,7 +18,6 @@ public class Timer : MonoBehaviour
     public GameObject rangedPrefab;
     public GameObject bruiserPrefab;
     public GameObject magePrefab;
-    public GameObject summoner;
     public GameObject bossPrefab;
 
     public Transform[] spawnPoints;
