@@ -49,6 +49,7 @@ public class Ranged : EnemyBase
             projectileScript.damage = damage;
 
             Vector3 direction = (playerObj.transform.position - projectileSpawnPoint.position).normalized;
+            direction.y = 0f;
             Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
             projectileRigidbody.velocity = direction * projectileSpeed;
 
