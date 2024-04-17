@@ -2937,6 +2937,7 @@ MonoBehaviour:
   camera: {fileID: 1278004033}
   moveSpeed: 5
   trail: {fileID: 1868208265}
+  animator: {fileID: 0}
   health: 100
 --- !u!114 &1868208263
 MonoBehaviour:
