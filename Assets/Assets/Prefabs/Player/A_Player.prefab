@@ -493,7 +493,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   moveSpeed: 5
-  trail: {fileID: -1615901975830719200}
   animator: {fileID: 0}
   health: 100
 --- !u!114 &-7907549236033763080
@@ -1675,14 +1674,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd3179aec5033843849e5fde5d269b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MR: {fileID: 0}
+  MC: {fileID: 0}
   pivot: {fileID: 6096334366435502772}
+  animator: {fileID: 9192238364054724558}
   HideTrigger: 0
   delay: 0.2
   attackTime: 1
-  timer: 0
+  attackTimer: 0
   damage: 5
-  MR: {fileID: 0}
-  MC: {fileID: 0}
 --- !u!1 &8261183923948494448
 GameObject:
   m_ObjectHideFlags: 0

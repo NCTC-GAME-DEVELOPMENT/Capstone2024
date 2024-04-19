@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerMeleeTest : MonoBehaviour
 {
+    public MeshRenderer MR;
+    public MeshCollider MC;
     public Transform pivot;
+    [SerializeField] private Animator animator;
 
     public bool HideTrigger = false;
 
     public float delay = 0.1f;
     public float attackTime;
-    public float timer;
+    public float attackTimer;
     public int damage;
-
-    public MeshRenderer MR;
-    public MeshCollider MC;
+    private bool attackAnim = false;
+    private float idleTimer = 0.375f;
 
     void Start()
     {
@@ -22,7 +24,7 @@ public class PlayerMeleeTest : MonoBehaviour
         MC = gameObject.GetComponent<MeshCollider>();
         MC.enabled = false;
         MR.enabled = false;
-        timer = attackTime;
+        attackTimer = attackTime;
         damage = 5;
         attackTime = 1f;
     }
@@ -30,21 +32,33 @@ public class PlayerMeleeTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer < 0)
+        attackTimer -= Time.deltaTime;
+        if (attackTimer < 0)
         {
+            animator.SetTrigger("isAttacking");
+            attackAnim = true;
             Attack();
+        }
+        if (attackAnim)
+        {
+            idleTimer -= Time.deltaTime;
+            if (idleTimer <= 0)
+            {
+                idleTimer = 0.375f;
+                attackAnim = false;
+                animator.SetTrigger("isIdle");
+            }
         }
     }
 
     public void Attack()
     {
-        if (timer > 0)
+        if (attackTimer > 0)
             return;
 
         MR.enabled = true;
         MC.enabled = true;
-        timer = attackTime;
+        attackTimer = attackTime;
         StartCoroutine(Delay(delay));
     }
 

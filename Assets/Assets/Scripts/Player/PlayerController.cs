@@ -9,47 +9,50 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private new Camera camera;
     [SerializeField] private float moveSpeed = 5;
-    [SerializeField] private TrailRenderer trail;
+    //[SerializeField] private TrailRenderer trail;
     public Animator animator;
     
     Timer timer;
 
     public int health = 100;
 
-    private Vector2 InputVector;
-    private Vector3 MousePosition;
+    private Vector2 inputVector;
+    private Vector3 mousePosition;
 
-    private int canDash = 2;
-    private bool dashing;
-    private float dashSpeed = 7.5f;
-    private float dashTime = 0.1f;
-    private float dashCooldown = 2.5f;
+    //private int canDash = 2;
+    //private bool dashing;
+    //private float dashSpeed = 7.5f;
+    //private float dashTime = 0.1f;
+    //private float dashCooldown = 2.5f;
 
     private void Start()
     {
         camera = Camera.main;
         animator = GetComponent<Animator>();
         timer = FindObjectOfType<Timer>();
-        trail = GetComponent<TrailRenderer>();
+        //trail = GetComponent<TrailRenderer>();
     }
     private void Update()
     {
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 
-        InputVector = new Vector2(h, v);
+        inputVector = new Vector2(h, v);
 
-        MousePosition = Input.mousePosition;
+        mousePosition = Input.mousePosition;
 
-        var targetVector = new Vector3(InputVector.x, 0, InputVector.y);
+        bool isMoving = inputVector.magnitude > 0;
+        animator.SetBool("isMoving", isMoving);
+        
+        var targetVector = new Vector3(inputVector.x, 0, inputVector.y);
 
-        if (dashing)
-            return;
+        //if (dashing)
+            //return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && canDash > 0)
+        /*if (Input.GetKeyDown(KeyCode.Space) && canDash > 0)
         {
             StartCoroutine(Dash(targetVector));
-        }
+        }*/
 
         MovePlayer(targetVector);
         MouseRotate();
@@ -57,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     private void MouseRotate()
     {
-        Ray ray = camera.ScreenPointToRay(MousePosition);
+        Ray ray = camera.ScreenPointToRay(mousePosition);
         LayerMask groundLayerMask = LayerMask.GetMask("Ground");
         if(Physics.Raycast(ray,out RaycastHit hitInfo, maxDistance: 300f, groundLayerMask))
         {
@@ -79,7 +82,7 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPosition;
     }
 
-    private IEnumerator Dash(Vector3 targetVector)
+    /*private IEnumerator Dash(Vector3 targetVector)
     {
         canDash--;
         dashing = true;
@@ -93,7 +96,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         Debug.Log("Dash Charge");
         canDash++;
-    }
+    }*/
     public void TakeDamage(int value)
     {
         health -= value;
