@@ -58,13 +58,13 @@ public class PlayerController : MonoBehaviour
     private void MouseRotate()
     {
         Ray ray = camera.ScreenPointToRay(MousePosition);
-        if(Physics.Raycast(ray,out RaycastHit hitInfo, maxDistance: 300f))
+        LayerMask groundLayerMask = LayerMask.GetMask("Ground");
+        if(Physics.Raycast(ray,out RaycastHit hitInfo, maxDistance: 300f, groundLayerMask))
         {
             var target = hitInfo.point;
             target.y = transform.position.y;
             transform.LookAt(target);
         }
-
     }
 
     private void MovePlayer(Vector3 targetVector)

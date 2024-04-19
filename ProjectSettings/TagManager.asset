@@ -9,17 +9,18 @@ TagManager:
   - attack
   - collision
   - wall
+  - playArea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - Enemy
+  - Player Collision
+  - Enemy Spawn
   - 
   - 
   - 

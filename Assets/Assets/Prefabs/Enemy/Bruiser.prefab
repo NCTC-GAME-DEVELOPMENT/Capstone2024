@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7961853344184049409}
   - component: {fileID: 4760801944480213551}
   - component: {fileID: 1522552341248119931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,9 +117,10 @@ GameObject:
   - component: {fileID: 6570793817523569751}
   - component: {fileID: 1769063838085393910}
   - component: {fileID: 5533446694738908225}
+  - component: {fileID: -346008814401202985}
   - component: {fileID: 8132061549998083860}
   - component: {fileID: 8172911101218851816}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bruiser
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -214,6 +215,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-346008814401202985
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433913220093282320}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 52
+  m_CollisionDetection: 0
 --- !u!195 &8132061549998083860
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -389,6 +417,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 78fdcbc05cfad8340aaa0e07c7edb68b, type: 3}
       propertyPath: m_Name
       value: Angle90
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78fdcbc05cfad8340aaa0e07c7edb68b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
