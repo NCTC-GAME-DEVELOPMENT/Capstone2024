@@ -10,6 +10,7 @@ TagManager:
   - collision
   - wall
   - playArea
+  - None
   layers:
   - Default
   - TransparentFX

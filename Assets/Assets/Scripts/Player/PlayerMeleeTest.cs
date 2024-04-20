@@ -8,6 +8,7 @@ public class PlayerMeleeTest : MonoBehaviour
     public MeshCollider MC;
     public Transform pivot;
     [SerializeField] private Animator animator;
+    private PlayerController playerController;
 
     public bool HideTrigger = false;
 
@@ -20,6 +21,7 @@ public class PlayerMeleeTest : MonoBehaviour
 
     void Start()
     {
+        playerController = animator.GetComponent<PlayerController>();
         MR = gameObject.GetComponent<MeshRenderer>();
         MC = gameObject.GetComponent<MeshCollider>();
         MC.enabled = false;
@@ -35,7 +37,8 @@ public class PlayerMeleeTest : MonoBehaviour
         attackTimer -= Time.deltaTime;
         if (attackTimer < 0)
         {
-            animator.SetTrigger("isAttacking");
+            if (!playerController.dead)
+                animator.SetTrigger("isAttacking");
             attackAnim = true;
             Attack();
         }

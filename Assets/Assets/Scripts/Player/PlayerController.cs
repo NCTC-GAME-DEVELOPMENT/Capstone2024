@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     
     Timer timer;
+    private Rigidbody rb;
 
     public int health = 100;
+    public bool dead = false;
 
     private Vector2 inputVector;
     private Vector3 mousePosition;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         camera = Camera.main;
         animator = GetComponent<Animator>();
         timer = FindObjectOfType<Timer>();
@@ -42,20 +45,23 @@ public class PlayerController : MonoBehaviour
         mousePosition = Input.mousePosition;
 
         bool isMoving = inputVector.magnitude > 0;
-        animator.SetBool("isMoving", isMoving);
+        
         
         var targetVector = new Vector3(inputVector.x, 0, inputVector.y);
 
         //if (dashing)
-            //return;
+        //return;
 
         /*if (Input.GetKeyDown(KeyCode.Space) && canDash > 0)
         {
             StartCoroutine(Dash(targetVector));
         }*/
-
-        MovePlayer(targetVector);
-        MouseRotate();
+        if (!dead)
+        {
+            MovePlayer(targetVector);
+            MouseRotate();
+            animator.SetBool("isMoving", isMoving);
+        }
     }
 
     private void MouseRotate()
@@ -102,8 +108,11 @@ public class PlayerController : MonoBehaviour
         health -= value;
         timer.HardModeAdjust(false);
         Debug.Log("Player Health Is " + health);
-        if(health <= 0)
+        if(health <= 0 && !dead)
         {
+            dead = true;
+            animator.SetTrigger("Death");
+            rb.constraints = RigidbodyConstraints.FreezeAll;
             Debug.Log("Death");
         }
     }
