@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
-public class MeleeTest : WeaponController
+public class MeleeTest : WeaponBase
 {
     // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-    }
+    //protected override void Start()
+    //{
+    //    base.Start();
+    //}
 
-    protected override void Attack()
+    public override void Attack()
     {
-        base.Attack();
+        //base.Attack();
         Collider[] colliders = Physics.OverlapSphere(transform.position, weaponData.stats.coneAngle);
 
         foreach (Collider collider in colliders)

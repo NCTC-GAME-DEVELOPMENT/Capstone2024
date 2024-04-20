@@ -2,32 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public abstract class WeaponBase : MonoBehaviour
 {
     public WeaponSO weaponData;
 
-    WeaponStats weaponStats;
-
-    float currentCooldown;
-    protected virtual void Start()
-    {
-        currentCooldown = weaponData.stats.cooldownDuration;
-    }
+    public WeaponStats weaponStats;
+    //public float cooldownDuration;
+    float timer;
+ 
 
     // Update is called once per frame
-    protected virtual void Update()
+    public virtual void Update()
     {
-        currentCooldown -= Time.deltaTime;
-        if(currentCooldown <= 0f)
+        timer -= Time.deltaTime;
+        if(timer <= 0f)
         {
             Attack();
+            timer = weaponData.stats.cooldownDuration;
         }
     }
 
-    protected virtual void Attack()
-    {
-        currentCooldown = weaponData.stats.cooldownDuration;
-    }
+    public abstract void Attack();
+
 
     public virtual void SetData(WeaponSO wd)
     {
@@ -36,9 +32,11 @@ public class WeaponController : MonoBehaviour
 
         weaponStats = new WeaponStats
             (wd.stats.damage,
+            wd.stats.amount,
             wd.stats.speed,
             wd.stats.pierce,
             wd.stats.cooldownDuration,
+            wd.stats.attackDuration,
             wd.stats.coneAngle,
             wd.stats.coneRange);
     }

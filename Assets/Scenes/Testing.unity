@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 304127113}
   - component: {fileID: 304127112}
   m_Layer: 5
-  m_Name: Button
+  m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -521,7 +521,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 304127113}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 385823047}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: MainMenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &304127113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4067,11 +4079,24 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 9151281482306378649, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
+      propertyPath: startingWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: e9b06b41b87a1c941ba9ceb2d79429ee, type: 2}
+    - target: {fileID: 9151281482306378649, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
+      propertyPath: weaponObjectsContainer
+      value: 
+      objectReference: {fileID: 1462514485}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
+--- !u!4 &1462514485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1625399275531514588, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
+  m_PrefabInstance: {fileID: 1462514484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1473022515
 GameObject:
   m_ObjectHideFlags: 0

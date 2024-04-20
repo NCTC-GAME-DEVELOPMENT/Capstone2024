@@ -11,7 +11,7 @@ public class MainMenuPanelManager : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Testing");
         //mainPanel.SetActive(false);
         //characterPanel.SetActive(true);
     }

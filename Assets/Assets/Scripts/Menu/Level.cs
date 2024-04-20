@@ -25,6 +25,13 @@ public class Level : MonoBehaviour
     List<UpgradeData> selectedUpgrades;
     List<UpgradeData> acquiredUpgrades;
 
+    WeaponManager weaponManager;
+
+    private void Awake()
+    {
+        weaponManager = GetComponent<WeaponManager>();
+    }
+
     private void Start()
     {
         levelTesting.SetLevelText(level);
@@ -94,6 +101,7 @@ public class Level : MonoBehaviour
             case UpgradeType.WeaponUpgrade:
                 break;
             case UpgradeType.WeaponUnlock:
+                weaponManager.AddWeapon(upgradeData.weaponData);
                 break;
             case UpgradeType.ItemUpgrade: 
                 break;
@@ -107,5 +115,10 @@ public class Level : MonoBehaviour
 
         acquiredUpgrades.Add(upgradeData);
         upgrades.Remove(upgradeData);
+    }
+
+    internal void AddAvailableUpgrades(List<UpgradeData> upgradesToAdd)
+    {
+        this.upgrades.AddRange(upgradesToAdd);
     }
 }

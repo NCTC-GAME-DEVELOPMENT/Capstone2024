@@ -8,19 +8,23 @@ using UnityEngine;
 
 public class WeaponStats
 {
-    public float damage;
+    public int damage;
+    public int amount;
     public float speed;
     public int pierce;
     public float cooldownDuration;
+    public float attackDuration;
     public float coneAngle;
     public float coneRange;
 
-    public WeaponStats(float damage, float speed, int pierce, float cooldownDuration, float coneAngle, float coneRange)
+    public WeaponStats(int damage, int amount, float speed, int pierce, float cooldownDuration, float attackDuration, float coneAngle, float coneRange)
     {
         this.damage = damage;
+        this.amount = amount;
         this.speed = speed;
         this.pierce = pierce;
         this.cooldownDuration = cooldownDuration;
+        this.attackDuration = attackDuration;
         this.coneAngle = coneAngle;
         this.coneRange = coneRange;
     }
@@ -33,5 +37,5 @@ public class WeaponSO : ScriptableObject
     public string Name;
     public WeaponStats stats;
     public GameObject prefab;
-
+    public List<UpgradeData> upgrades;
 }

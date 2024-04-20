@@ -10,20 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62ffbcfc658f6a8409e8266f7bd6de7f, type: 3}
-  m_Name: WeaponTest
+  m_Name: YoyoData
   m_EditorClassIdentifier: 
-  Name: Weapon Test
+  Name: Yoyo
   stats:
     damage: 10
-    amount: 0
-    speed: 10
+    amount: 4
+    speed: 20
     pierce: 0
-    cooldownDuration: 0
+    cooldownDuration: 10
     attackDuration: 5
-    coneAngle: 1
-    coneRange: 0
-  prefab: {fileID: 0}
-  upgrades:
-  - {fileID: 11400000, guid: 1f1a77355e1b7d2439a2e987db04b7a8, type: 2}
-  - {fileID: 11400000, guid: 44f5dc9d87c74244992c648ec09f6159, type: 2}
-  - {fileID: 11400000, guid: 1acb269932f8b434b8a488bb9801b7ce, type: 2}
+    coneAngle: 0
+    coneRange: 5
+  prefab: {fileID: 7517220773550258931, guid: 0eb30decad924a54983a85e1b7ce4af1, type: 3}
+  upgrades: []
