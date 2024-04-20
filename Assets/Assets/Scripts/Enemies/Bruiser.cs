@@ -22,6 +22,7 @@ public class Bruiser : EnemyBase
     private bool attackBool = false;
 
     private bool walkCheck = false;
+    private bool faceCheck = false;
     protected override void InitializeObject()
     {
         warningMR.enabled = false;
@@ -67,8 +68,15 @@ public class Bruiser : EnemyBase
             currentColor.a = 0.5f;
             warningMaterial.color = currentColor;
 
-            rotationSpeed = 25f;
-            LookAtPlayer(rotationSpeed);
+            if (!faceCheck)
+            {
+                Vector3 directionToPlayer = playerObj.transform.position - transform.position;
+                directionToPlayer.y = 0f;
+
+                transform.rotation = Quaternion.LookRotation(directionToPlayer);
+
+                faceCheck = true;
+            }
 
             windupTime -= Time.deltaTime;
             if (windupTime <= 0)
@@ -98,6 +106,7 @@ public class Bruiser : EnemyBase
                 warningMC.enabled = false;
                 windingUp = true;
                 attacked = false;
+                faceCheck = false;
                 windupTime = 1;
                 activeTime = 0.1f;
                 rotationSpeed = 200f;
@@ -112,11 +121,11 @@ public class Bruiser : EnemyBase
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0 && !attackBool)
         {
+            LookAtPlayer(rotationSpeed);
             attackBool = true;
             animator.SetTrigger("isIdle");
         }
 
-        LookAtPlayer(rotationSpeed);
 
         //Vector3 directionToPlayer = transform.position - playerObj.transform.position;
         //directionToPlayer.y = 0f;

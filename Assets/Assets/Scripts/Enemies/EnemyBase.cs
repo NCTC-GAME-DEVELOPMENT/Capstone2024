@@ -10,6 +10,7 @@ public class EnemyBase : MonoBehaviour
     protected PlayerController playerController;
     protected Timer timer;
     protected Animator animator;
+    protected Rigidbody rb;
 
     protected bool boss = false;
     protected int health;
@@ -33,6 +34,8 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void InitializeObject()
     {
+        if (GetComponent<Rigidbody>() != null)
+            rb = GetComponent<Rigidbody>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         timer = FindObjectOfType<Timer>();
         animator = GetComponent<Animator>();
