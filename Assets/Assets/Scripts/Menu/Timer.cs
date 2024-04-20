@@ -17,7 +17,6 @@ public class Timer : MonoBehaviour
     public GameObject slimePrefab;
     public GameObject rangedPrefab;
     public GameObject bruiserPrefab;
-    public GameObject magePrefab;
     public GameObject bossPrefab;
 
     public Transform[] spawnPoints;

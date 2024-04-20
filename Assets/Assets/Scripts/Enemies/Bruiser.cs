@@ -17,6 +17,11 @@ public class Bruiser : EnemyBase
     private float windupTime = 1f;
     public float activeTime = 0.1f;
     private float cooldown = 2f;
+
+    private float attackTimer = 0.625f;
+    private bool attackBool = false;
+
+    private bool walkCheck = false;
     protected override void InitializeObject()
     {
         warningMR.enabled = false;
@@ -32,12 +37,19 @@ public class Bruiser : EnemyBase
 
     void Chase()
     {
+        if (!walkCheck)
+        {
+            animator.SetTrigger("isWalking");
+            walkCheck = true;
+        }
         MoveToPlayer();
         LookAtPlayer(rotationSpeed);
 
         float distanceToPlayer = Vector3.Distance(playerObj.transform.position, transform.position);
         if (distanceToPlayer <= 4)
         {
+            walkCheck = false;
+            animator.SetTrigger("isWindingUp");
             navMeshAgent.SetDestination(navMeshAgent.transform.position);
             think = Attack;
         }
@@ -55,12 +67,15 @@ public class Bruiser : EnemyBase
             currentColor.a = 0.5f;
             warningMaterial.color = currentColor;
 
-            rotationSpeed = 40f;
+            rotationSpeed = 25f;
             LookAtPlayer(rotationSpeed);
 
             windupTime -= Time.deltaTime;
             if (windupTime <= 0)
+            {
                 windingUp = false;
+                animator.SetTrigger("isAttacking");
+            }
         }
 
         if (!windingUp)
@@ -94,19 +109,28 @@ public class Bruiser : EnemyBase
 
     void Idle()
     {
+        attackTimer -= Time.deltaTime;
+        if (attackTimer <= 0 && !attackBool)
+        {
+            attackBool = true;
+            animator.SetTrigger("isIdle");
+        }
+
         LookAtPlayer(rotationSpeed);
 
-        Vector3 directionToPlayer = transform.position - playerObj.transform.position;
-        directionToPlayer.y = 0f;
+        //Vector3 directionToPlayer = transform.position - playerObj.transform.position;
+        //directionToPlayer.y = 0f;
 
-        Vector3 moveDirection = directionToPlayer;
-        Vector3 newPosition = transform.position + moveDirection * navMeshAgent.speed * Time.deltaTime;
+        //Vector3 moveDirection = directionToPlayer;
+        //Vector3 newPosition = transform.position + moveDirection * navMeshAgent.speed * Time.deltaTime;
 
-        navMeshAgent.SetDestination(newPosition);
+        //navMeshAgent.SetDestination(newPosition);
 
         cooldown -= Time.deltaTime;
         if (cooldown <= 0)
         {
+            attackBool = false;
+            attackTimer = 0.625f;
             cooldown = 2f;
             navMeshAgent.speed = 4f;
             think = Chase;

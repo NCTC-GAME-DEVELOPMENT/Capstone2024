@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f4f15dc4d925d8e4d93df7f53cc05c6a
+guid: 71c5e6680bf151746a364c8af54324a1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle
-      takeName: idle
-      internalID: -5252816984213320552
+      name: Armature|attack
+      takeName: Armature|attack
+      internalID: -251351218608039746
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -62,47 +62,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|CharMove
-      takeName: Armature|CharMove
-      internalID: -235196104401547960
+      name: Armature|attackIdle
+      takeName: Armature|attackIdle
+      internalID: 723281571401548682
       firstFrame: 0
-      lastFrame: 22
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|death
-      takeName: Armature|death
-      internalID: 5866576275671282845
-      firstFrame: 0
-      lastFrame: 20
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -131,7 +102,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -149,11 +120,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|swordAttack
-      takeName: Armature|swordAttack
-      internalID: -3407452837148056845
+      name: Armature|movement
+      takeName: Armature|movement
+      internalID: 1618131792533263256
       firstFrame: 0
-      lastFrame: 9
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
