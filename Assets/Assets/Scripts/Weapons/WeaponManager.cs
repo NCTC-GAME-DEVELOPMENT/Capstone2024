@@ -8,9 +8,17 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] WeaponSO startingWeapon;
 
+    [SerializeField] Transform player;
+
     private void Start()
     {
         AddWeapon(startingWeapon);
+    }
+
+    private void Update()
+    {
+        
+        transform.position = player.transform.position;
     }
     public void AddWeapon(WeaponSO weaponData)
     {
@@ -22,5 +30,11 @@ public class WeaponManager : MonoBehaviour
         {
             level.AddAvailableUpgrades(weaponData.upgrades);
         }
+    }
+
+    public virtual Quaternion GetPlayerRotation()
+    {
+        Quaternion playerRotation = player.transform.rotation;
+        return playerRotation;
     }
 }
