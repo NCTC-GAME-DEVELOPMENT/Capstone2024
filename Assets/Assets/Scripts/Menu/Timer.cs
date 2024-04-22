@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     public float totalTime = 1200f;
     public float currentTime;
     public float nextEvent;
-    private int eventCount = 0;
+    public int eventCount = 0;
     private bool isTimerRunning = false;
     public TMP_Text timerText;
 
@@ -43,7 +43,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
-            currentTime -= 55;
+            currentTime -= 30;
         if (Input.GetKeyDown(KeyCode.Y))
             currentTime += 60;
 
@@ -78,6 +78,7 @@ public class Timer : MonoBehaviour
     {
         isTimerRunning = false;
         CancelInvoke(nameof(SpawnRandomEnemy));
+        Event();
     }
 
     public void ResetTimer()
@@ -151,13 +152,19 @@ public class Timer : MonoBehaviour
             enemyArray[1] = slimePrefab;
         }
         if (eventCount == 4)
+        {
             SpawnEnemy(bruiserPrefab);
+        }
         if (eventCount == 5)
         {
             enemyArray = new GameObject[3];
             enemyArray[0] = crawlerPrefab;
             enemyArray[1] = slimePrefab;
             enemyArray[2] = rangedPrefab;
+        }
+        if (eventCount == 20)
+        {
+            SpawnEnemy(bossPrefab);
         }
 
     }

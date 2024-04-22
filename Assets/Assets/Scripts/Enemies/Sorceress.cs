@@ -19,6 +19,7 @@ public class Sorceress : EnemyBase
     protected override void InitializeObject()
     {
         base.InitializeObject();
+        boss = true;
         playArea = GameObject.FindGameObjectWithTag("playArea");
         animator.SetTrigger("isMoving");
         think = Chase;
@@ -65,7 +66,8 @@ public class Sorceress : EnemyBase
     {
         foreach (Transform summonPoint in summonPoints)
         {
-            Instantiate(enemySummon, summonPoint.position, summonPoint.rotation);
+            GameObject summon = Instantiate(enemySummon, summonPoint.position, summonPoint.rotation);
+            summon.GetComponent<EnemyBase>().boss = true;
         }
 
     }

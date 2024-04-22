@@ -12,7 +12,7 @@ public class EnemyBase : MonoBehaviour
     protected Animator animator;
     protected Rigidbody rb;
 
-    protected bool boss = false;
+    public bool boss = false;
     protected int health;
     public int damage;
     protected int contactDamage;

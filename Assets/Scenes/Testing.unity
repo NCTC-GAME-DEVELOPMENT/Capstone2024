@@ -849,13 +849,14 @@ MonoBehaviour:
   totalTime: 1200
   currentTime: 0
   nextEvent: 0
+  eventCount: 0
   timerText: {fileID: 1085958633}
   enemyArray: []
   crawlerPrefab: {fileID: 6467026621046783967, guid: 4dbdd01864e92fa4fa00813b6c590b0b, type: 3}
   slimePrefab: {fileID: 8842785992613927052, guid: f88a7fa64a5d92043af7ed4ccaee4f29, type: 3}
   rangedPrefab: {fileID: 3558172366977032371, guid: 025ff438083456a4b8aa157c3799e294, type: 3}
-  bruiserPrefab: {fileID: 101282055594733774, guid: b3140fb1333dd5b438019857ccf24b3b, type: 3}
-  bossPrefab: {fileID: 0}
+  bruiserPrefab: {fileID: 6731688415402513781, guid: b3140fb1333dd5b438019857ccf24b3b, type: 3}
+  bossPrefab: {fileID: 1534290908201854847, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
   spawnPoints:
   - {fileID: 1437457991}
   - {fileID: 169218729}
@@ -1821,63 +1822,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693197441}
   m_CullTransparentMesh: 1
---- !u!1001 &787678603
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1534290908201854847, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_Name
-      value: Sorceress
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 35.772713
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.828388
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162068528810425797, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: eb5c1436b7542fd46bf7aee86beeebda, type: 3}
 --- !u!1 &788536529
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,7 +5113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1992724047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5220,4 +5164,3 @@ SceneRoots:
   - {fileID: 1462514484}
   - {fileID: 1992724048}
   - {fileID: 572468106}
-  - {fileID: 787678603}

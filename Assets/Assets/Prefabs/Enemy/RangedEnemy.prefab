@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c34e5645bc5389448aec4abe3e21baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: 0
   damage: 0
   StatsChart:
   - health: 40
@@ -323,6 +324,9 @@ MonoBehaviour:
   - health: 760
     damage: 95
     contactDamage: 38
+  - health: 800
+    damage: 100
+    contactDamage: 40
   - health: 800
     damage: 100
     contactDamage: 40
