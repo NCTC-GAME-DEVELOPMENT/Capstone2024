@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 288580914075256159}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.75, z: 3}
+  m_LocalPosition: {x: -2.25, y: 6.25, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -326,7 +326,7 @@ MonoBehaviour:
   - health: 800
     damage: 100
     contactDamage: 40
-  projectilePrefab: {fileID: 7751402459244575460, guid: 353bc0c421f0d2246a9faebfe60b33bb, type: 3}
+  projectilePrefab: {fileID: 7778122218930659235, guid: 82cce75d764a0d442ba90ba6c6f76bcc, type: 3}
   projectileSpawnPoint: {fileID: 6530125318735369808}
 --- !u!195 &3829461684611907563
 NavMeshAgent:

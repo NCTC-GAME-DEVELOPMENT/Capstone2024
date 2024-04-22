@@ -10,8 +10,9 @@ public class Ranged : EnemyBase
     [SerializeField] private Transform projectileSpawnPoint;
 
     private float projectileCooldown;
-    private float projectileInterval = 1f;
-    private float projectileSpeed = 10f;
+    private float projectileInterval = 2.168f;
+    private float projectileSpeed = 7.5f;
+    private bool inPlayArea = false;
 
     protected override void InitializeObject()
     {
@@ -24,7 +25,7 @@ public class Ranged : EnemyBase
         MoveToPlayer();
         float distanceToPlayer = Vector3.Distance(playerObj.transform.position, transform.position);
 
-        if (distanceToPlayer <= 12.5)
+        if (distanceToPlayer <= 12.5 && inPlayArea)
         {
             navMeshAgent.SetDestination(navMeshAgent.transform.position);
             think = Attack;
@@ -50,6 +51,9 @@ public class Ranged : EnemyBase
 
             Vector3 direction = (playerObj.transform.position - projectileSpawnPoint.position).normalized;
             direction.y = 0f;
+            projectile.transform.rotation = Quaternion.LookRotation(direction);
+            projectile.transform.Rotate(Vector3.right, 90f);
+            projectile.transform.Rotate(Vector3.forward, 180f);
             Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
             projectileRigidbody.velocity = direction * projectileSpeed;
 
@@ -60,5 +64,11 @@ public class Ranged : EnemyBase
             think = Chase;
             animator.SetTrigger("isMoving");
         }
+    }
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        if (other.gameObject.CompareTag("playArea"))
+            inPlayArea = true;
     }
 }
