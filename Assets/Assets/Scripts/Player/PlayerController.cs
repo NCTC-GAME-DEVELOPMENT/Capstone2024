@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private new Camera camera;
     [SerializeField] private float moveSpeed = 5;
-    private int EXP;
+    public int xp = 0;
+    public int nextLevelXP = 1;
+    public int level = 1;
     //[SerializeField] private TrailRenderer trail;
     public Animator animator;
     
@@ -21,12 +23,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 inputVector;
     private Vector3 mousePosition;
-
-    //private int canDash = 2;
-    //private bool dashing;
-    //private float dashSpeed = 7.5f;
-    //private float dashTime = 0.1f;
-    //private float dashCooldown = 2.5f;
 
     private void Start()
     {
@@ -50,18 +46,17 @@ public class PlayerController : MonoBehaviour
         
         var targetVector = new Vector3(inputVector.x, 0, inputVector.y);
 
-        //if (dashing)
-        //return;
-
-        /*if (Input.GetKeyDown(KeyCode.Space) && canDash > 0)
-        {
-            StartCoroutine(Dash(targetVector));
-        }*/
         if (!dead)
         {
             MovePlayer(targetVector);
             MouseRotate();
             animator.SetBool("isMoving", isMoving);
+            if (xp >= nextLevelXP)
+            {
+                Debug.Log("LEVEL UP");
+                nextLevelXP += nextLevelXP + 1;
+                level++;
+            }
         }
     }
 
@@ -88,22 +83,6 @@ public class PlayerController : MonoBehaviour
         var targetPosition = transform.position + targetVector * speed;
         transform.position = targetPosition;
     }
-
-    /*private IEnumerator Dash(Vector3 targetVector)
-    {
-        canDash--;
-        dashing = true;
-        targetVector = Quaternion.Euler(0, camera.gameObject.transform.eulerAngles.y, 0) * targetVector;
-        var targetPosition = transform.position + targetVector * dashSpeed;
-        transform.position = targetPosition;
-        trail.emitting = true;
-        yield return new WaitForSeconds(dashTime);
-        trail.emitting = false;
-        dashing = false;
-        yield return new WaitForSeconds(dashCooldown);
-        Debug.Log("Dash Charge");
-        canDash++;
-    }*/
     public void TakeDamage(int value)
     {
         health -= value;

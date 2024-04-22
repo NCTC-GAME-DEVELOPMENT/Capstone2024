@@ -4128,6 +4128,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7907549236033763080, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
+      propertyPath: levelTesting
+      value: 
+      objectReference: {fileID: 687381612}
+    - target: {fileID: -7907549236033763080, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
+      propertyPath: upgradePanel
+      value: 
+      objectReference: {fileID: 385823046}
+    - target: {fileID: -4455321841372434896, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4455321841372434896, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
+      propertyPath: nextLevelXP
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1554592660087212295, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

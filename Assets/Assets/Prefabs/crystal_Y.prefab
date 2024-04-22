@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8237800114820752871}
   - component: {fileID: 2580977141100373325}
+  - component: {fileID: 7333634040240363269}
   m_Layer: 0
   m_Name: crystal_Y
   m_TagString: XP
@@ -139,3 +140,15 @@ CapsuleCollider:
   m_Height: 1.25
   m_Direction: 1
   m_Center: {x: -0.33, y: 0.5, z: 0}
+--- !u!114 &7333634040240363269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139938441100138743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e29228a0ce997341a58483904c00309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
