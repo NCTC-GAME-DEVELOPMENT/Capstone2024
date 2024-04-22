@@ -12,6 +12,7 @@ TagManager:
   - playArea
   - None
   - boss
+  - XP
   layers:
   - Default
   - TransparentFX

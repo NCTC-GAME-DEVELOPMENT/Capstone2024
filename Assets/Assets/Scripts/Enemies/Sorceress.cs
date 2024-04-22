@@ -12,7 +12,6 @@ public class Sorceress : EnemyBase
     private float teleportDistance = 15f;
     private float rotationSpeed = 200f;
 
-    private bool inPlayArea = false;
     private float cooldownTimer = 2f;
 
     // Start is called before the first frame update
@@ -115,11 +114,5 @@ public class Sorceress : EnemyBase
         lookAtDirection.y = 0f;
         Quaternion targetRotation = Quaternion.LookRotation(lookAtDirection);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-        if (other.gameObject.CompareTag("playArea"))
-            inPlayArea = true;
     }
 }

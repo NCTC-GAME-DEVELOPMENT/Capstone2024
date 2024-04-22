@@ -11,8 +11,10 @@ public class EnemyBase : MonoBehaviour
     protected Timer timer;
     protected Animator animator;
     protected Rigidbody rb;
+    [SerializeField] protected GameObject xpPrefab;
 
     public bool boss = false;
+    protected bool inPlayArea = false;
     protected int health;
     public int damage;
     protected int contactDamage;
@@ -73,22 +75,28 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
-        health -= damage;
-        Debug.Log("enemy is at " + health + "HP");
-        if (health <= 0)
-            Death();
+        if (inPlayArea)
+        {
+            health -= damage;
+            Debug.Log("enemy is at " + health + "HP");
+            if (health <= 0)
+                Death();
+        }
     }
     
     protected virtual void Death()
     {
         Destroy(gameObject);
         timer.HardModeAdjust(true);
+        GameObject xp = Instantiate(xpPrefab, transform.position, Quaternion.identity);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
             contact = true;
+        if (other.gameObject.CompareTag("playArea"))
+            inPlayArea = true;
     }
 
     protected virtual void OnTriggerExit(Collider other)

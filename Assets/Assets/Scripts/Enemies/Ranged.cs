@@ -12,7 +12,6 @@ public class Ranged : EnemyBase
     private float projectileCooldown;
     private float projectileInterval = 2.168f;
     private float projectileSpeed = 7.5f;
-    private bool inPlayArea = false;
 
     protected override void InitializeObject()
     {
@@ -64,11 +63,5 @@ public class Ranged : EnemyBase
             think = Chase;
             animator.SetTrigger("isMoving");
         }
-    }
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-        if (other.gameObject.CompareTag("playArea"))
-            inPlayArea = true;
     }
 }

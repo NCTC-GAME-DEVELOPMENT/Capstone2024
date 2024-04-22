@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private new Camera camera;
     [SerializeField] private float moveSpeed = 5;
+    private int EXP;
     //[SerializeField] private TrailRenderer trail;
     public Animator animator;
     
