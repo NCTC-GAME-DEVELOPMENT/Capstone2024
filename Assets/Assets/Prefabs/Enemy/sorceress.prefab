@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
       propertyPath: m_Name
-      value: sorceress
+      value: Sorceress
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
       propertyPath: m_Layer
@@ -241,6 +241,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1403711896561045249}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2342053450185628425}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5319587596641861911}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5473126501113571104}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5912007361622921285}
   m_SourcePrefab: {fileID: 100100000, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
 --- !u!1 &1534290908201854847 stripped
 GameObject:
@@ -260,14 +272,167 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  StatsChart: []
+  StatsChart:
+  - health: 50
+    damage: 10
+    contactDamage: 2
+  - health: 100
+    damage: 15
+    contactDamage: 4
+  - health: 150
+    damage: 20
+    contactDamage: 6
+  - health: 200
+    damage: 20
+    contactDamage: 8
+  - health: 250
+    damage: 25
+    contactDamage: 10
+  - health: 300
+    damage: 30
+    contactDamage: 12
+  - health: 350
+    damage: 35
+    contactDamage: 14
+  - health: 400
+    damage: 40
+    contactDamage: 16
+  - health: 450
+    damage: 45
+    contactDamage: 18
+  - health: 500
+    damage: 50
+    contactDamage: 20
+  - health: 550
+    damage: 55
+    contactDamage: 22
+  - health: 600
+    damage: 60
+    contactDamage: 24
+  - health: 650
+    damage: 65
+    contactDamage: 26
+  - health: 700
+    damage: 70
+    contactDamage: 28
+  - health: 750
+    damage: 75
+    contactDamage: 30
+  - health: 800
+    damage: 80
+    contactDamage: 32
+  - health: 850
+    damage: 85
+    contactDamage: 34
+  - health: 900
+    damage: 90
+    contactDamage: 36
+  - health: 950
+    damage: 95
+    contactDamage: 38
+  - health: 1000
+    damage: 100
+    contactDamage: 40
   summonPoints:
   - {fileID: 3269769121650280335}
   - {fileID: 8960651719909019806}
   - {fileID: 6179409763040605619}
   - {fileID: 8361805372937576299}
   enemySummon: {fileID: 6731688415402513781, guid: b3140fb1333dd5b438019857ccf24b3b, type: 3}
-  warning: {fileID: 919132149155446097, guid: 66e3d540158190e4a813da8d9c51c73d, type: 3}
+  warning: {fileID: 8156714876308851291, guid: ca2da9b478f14b9458a7df32445f47a1, type: 3}
+--- !u!136 &2342053450185628425
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534290908201854847}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 9
+  m_Direction: 1
+  m_Center: {x: 0, y: 4, z: 0}
+--- !u!54 &5319587596641861911
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534290908201854847}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 52
+  m_CollisionDetection: 0
+--- !u!195 &5473126501113571104
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534290908201854847}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!95 &5912007361622921285
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534290908201854847}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9af28cb1f80b4241afc9126e53b0c31, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &2162068528810425797 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}

@@ -49,7 +49,7 @@ public class EnemyBase : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    protected virtual void Update()
     {
         ContactDamage();
         think?.Invoke();
