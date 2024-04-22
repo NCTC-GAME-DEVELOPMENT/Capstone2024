@@ -7,7 +7,8 @@ public class YoyoWeapon : WeaponBase
     [SerializeField] GameObject yoyoPrefab;
     [SerializeField] Transform wpn_Yoyo;
 
-
+    //PlayerController playerController;
+    //Quaternion playerRot;
 
     //void Start()
     //{
@@ -16,7 +17,11 @@ public class YoyoWeapon : WeaponBase
     public override void Update()
     {
         base.Update();
-        transform.Rotate(Vector3.up, weaponData.stats.speed * Time.deltaTime);
+        //playerController = GetComponent<PlayerController>();
+        //playerRot = playerController.transform.rotation;
+        //transform.Rotate(Vector3.up, 0, Space.World);
+        transform.Rotate(Vector3.up, weaponData.stats.speed * Time.deltaTime, Space.Self);
+        
     }
     public override void Attack()
     {
