@@ -21,4 +21,5 @@ public class UpgradeData : ScriptableObject
     public string description;
 
     public WeaponSO weaponData;
+    public WeaponStats weaponUpgradeStats;
 }

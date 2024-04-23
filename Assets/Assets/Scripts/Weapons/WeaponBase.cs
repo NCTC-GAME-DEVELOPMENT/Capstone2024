@@ -19,6 +19,7 @@ public abstract class WeaponBase : MonoBehaviour
         {
             Attack();
             timer = weaponData.stats.cooldownDuration;
+
         }
     }
 
@@ -39,5 +40,10 @@ public abstract class WeaponBase : MonoBehaviour
             wd.stats.attackDuration,
             wd.stats.coneAngle,
             wd.stats.coneRange);
+    }
+
+    public void Upgrade(UpgradeData upgradeData)
+    {
+        weaponStats.Sum(upgradeData.weaponUpgradeStats);
     }
 }

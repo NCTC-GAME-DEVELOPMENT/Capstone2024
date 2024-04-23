@@ -20,13 +20,13 @@ public class YoyoWeapon : WeaponBase
         //playerController = GetComponent<PlayerController>();
         //playerRot = playerController.transform.rotation;
         //transform.Rotate(Vector3.up, 0, Space.World);
-        transform.Rotate(Vector3.up, weaponData.stats.speed * Time.deltaTime, Space.Self);
+        transform.Rotate(Vector3.up, weaponStats.speed * Time.deltaTime, Space.Self);
         
     }
     public override void Attack()
     {
         //scale up to attack size to go out from player
-        for (int i = 0; i < weaponData.stats.amount; i++)
+        for (int i = 0; i < weaponStats.amount; i++)
         {
             
 
@@ -39,8 +39,8 @@ public class YoyoWeapon : WeaponBase
             GameObject yoyoObject = Instantiate(yoyoPrefab, pos, rot, wpn_Yoyo);            
 
             YoyoCollider yoyoCollider = yoyoObject.GetComponent<YoyoCollider>();
-            yoyoCollider.damage = weaponData.stats.damage;
-            yoyoCollider.attackDuration = weaponData.stats.attackDuration;
+            yoyoCollider.damage = weaponStats.damage;
+            yoyoCollider.attackDuration = weaponStats.attackDuration;
         
         
         }

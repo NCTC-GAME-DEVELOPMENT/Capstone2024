@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,23 +9,29 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] WeaponSO startingWeapon;
 
-    [SerializeField] Transform player;
+    
 
+    List<WeaponBase> weapons;
+
+    private void Awake()
+    {
+        weapons = new List<WeaponBase>();
+    }
     private void Start()
     {
         AddWeapon(startingWeapon);
     }
 
-    private void Update()
-    {
-        
-        transform.position = player.transform.position;
-    }
+   
     public void AddWeapon(WeaponSO weaponData)
     {
         GameObject weaponGameObject = Instantiate(weaponData.prefab, weaponObjectsContainer);
 
-        weaponGameObject.GetComponent<WeaponBase>().SetData(weaponData);
+        WeaponBase weaponBase = weaponGameObject.GetComponent<WeaponBase>();
+
+        weaponBase.SetData(weaponData);
+        weapons.Add(weaponBase);
+
         Level level = GetComponent<Level>();
         if (level != null)
         {
@@ -32,9 +39,11 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public virtual Quaternion GetPlayerRotation()
+    
+
+    internal void UpgradeWeapon(UpgradeData upgradeData)
     {
-        Quaternion playerRotation = player.transform.rotation;
-        return playerRotation;
+        WeaponBase weaponToUpgrade = weapons.Find(wd => wd.weaponData == upgradeData.weaponData);
+        weaponToUpgrade.Upgrade(upgradeData);
     }
 }

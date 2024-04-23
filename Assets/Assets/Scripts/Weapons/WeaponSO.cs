@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -27,6 +28,18 @@ public class WeaponStats
         this.attackDuration = attackDuration;
         this.coneAngle = coneAngle;
         this.coneRange = coneRange;
+    }
+
+    internal void Sum(WeaponStats weaponUpgradeStats)
+    {
+        this.damage += weaponUpgradeStats.damage;
+        this.amount += weaponUpgradeStats.amount;
+        this.speed += weaponUpgradeStats.speed;
+        this.pierce += weaponUpgradeStats.pierce;
+        this.cooldownDuration += weaponUpgradeStats.cooldownDuration;
+        this.attackDuration += weaponUpgradeStats.attackDuration;
+        this.coneAngle += weaponUpgradeStats.coneAngle;
+        this.coneRange += weaponUpgradeStats.coneRange;
     }
 }
 

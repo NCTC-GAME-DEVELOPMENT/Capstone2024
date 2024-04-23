@@ -5,25 +5,25 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
 
-
     int level = 1;
     int experience = 0;
+    [SerializeField] ExperienceBar experienceBar;
 
     int TO_LEVEL_UP
     {
         get
         {
-            return level * 1000;
+            return level * 10;
         }
     }
 
     [SerializeField] List<UpgradeData> upgrades;
 
     [SerializeField] UpgradePanelManager upgradePanel;
-    [SerializeField] LevelTesting levelTesting;
+
 
     List<UpgradeData> selectedUpgrades;
-    List<UpgradeData> acquiredUpgrades;
+    [SerializeField] List<UpgradeData> acquiredUpgrades;
 
     WeaponManager weaponManager;
 
@@ -34,13 +34,15 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
-        levelTesting.SetLevelText(level);
+        experienceBar.SetLevelText(level);
+        experienceBar.UpdateExperienceSlider(experience, TO_LEVEL_UP);
     }
 
     public void AddExperience(int amount)
     {
         experience += amount;
         CheckLevelUp();
+        experienceBar.UpdateExperienceSlider(experience, TO_LEVEL_UP);
     }
 
     public void CheckLevelUp()
@@ -60,7 +62,7 @@ public class Level : MonoBehaviour
         upgradePanel.OpenPanel(selectedUpgrades);
         experience -= TO_LEVEL_UP;
         level += 1;
-        levelTesting.SetLevelText(level);
+        experienceBar.SetLevelText(level);
     }
 
     //Level Up Test Button
@@ -99,6 +101,7 @@ public class Level : MonoBehaviour
         switch (upgradeData.upgradeType)
         {
             case UpgradeType.WeaponUpgrade:
+                weaponManager.UpgradeWeapon(upgradeData);
                 break;
             case UpgradeType.WeaponUnlock:
                 weaponManager.AddWeapon(upgradeData.weaponData);
