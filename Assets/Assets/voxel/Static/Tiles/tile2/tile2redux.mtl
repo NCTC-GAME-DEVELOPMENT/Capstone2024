@@ -1,7 +1,7 @@
-# Blender 4.0.2 MTL File: 'None'
+# Blender 3.6.10 Release Candidate MTL File: 'None'
 # www.blender.org
 
-newmtl palette.013
+newmtl palette.004
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -9,9 +9,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd tile2/tile2-0.png
+map_Kd tile2/tile2reset-0.png
 
-newmtl palette.014
+newmtl palette.005
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -19,9 +19,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd tile2/tile2-1.png
+map_Kd tile2/tile2reset-1.png
 
-newmtl palette.015
+newmtl palette.006
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -29,9 +29,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd tile2/tile2-2.png
+map_Kd tile2/tile2reset-2.png
 
-newmtl palette.016
+newmtl palette.007
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -39,9 +39,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd tile2/tile2-3.png
+map_Kd tile2/tile2reset-3.png
 
-newmtl palette.017
+newmtl palette.008
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -49,9 +49,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd tile2/tile2-4.png
+map_Kd tile2/tile2reset-4.png
 
-newmtl palette.018
+newmtl palette.009
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -59,9 +59,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd tile2/tile2-5.png
+map_Kd tile2/tile2reset-5.png
 
-newmtl palette.019
+newmtl palette.010
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -69,9 +69,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd tile2/tile2-6.png
+map_Kd tile2/tile2reset-6.png
 
-newmtl palette.020
+newmtl palette.011
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -79,4 +79,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd tile2/tile2-7.png
+map_Kd tile2/tile2reset-7.png
