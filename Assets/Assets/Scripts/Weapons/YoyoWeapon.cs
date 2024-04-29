@@ -30,9 +30,9 @@ public class YoyoWeapon : WeaponBase
         {
             
 
-            float angle = i * Mathf.PI * 2 / weaponData.stats.amount;
-            float x = Mathf.Cos(angle) * weaponData.stats.coneRange;
-            float z = Mathf.Sin(angle) * weaponData.stats.coneRange;
+            float angle = i * Mathf.PI * 2 / weaponStats.amount;
+            float x = Mathf.Cos(angle) * weaponStats.coneRange;
+            float z = Mathf.Sin(angle) * weaponStats.coneRange;
             Vector3 pos = transform.position + new Vector3(x, 0, z);
             float angleDegrees = -angle * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);

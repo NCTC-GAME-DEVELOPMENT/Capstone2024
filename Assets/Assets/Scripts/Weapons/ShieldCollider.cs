@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YoyoCollider : MonoBehaviour
+public class ShieldCollider : MonoBehaviour
 {
     public int damage;
     public float attackDuration;
-    
+
 
     private void Update()
     {
@@ -14,9 +14,10 @@ public class YoyoCollider : MonoBehaviour
         if (attackDuration <= 0f)
         {
             Destroy(gameObject);
-            
+
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("enemy"))
