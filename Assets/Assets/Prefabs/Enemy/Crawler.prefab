@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014b7848cb2e48f40bad3f792df8948f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xpPrefab: {fileID: 6139938441100138743, guid: 23ba26f98a214314aa75491e33fb3ab6, type: 3}
+  xpPrefab: {fileID: 5684695555102086281, guid: 4fcb680b4ae2616468c139e92fb7e3e4, type: 3}
   boss: 0
   damage: 0
   StatsChart:

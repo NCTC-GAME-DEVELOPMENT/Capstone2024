@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
     public GameObject bossPrefab;
 
     public Transform[] spawnPoints;
-    public float spawnTimer = 5f;
+    public float spawnTimer = 4f;
 
     public int StatsChartRow = 0;
 
@@ -137,7 +137,9 @@ public class Timer : MonoBehaviour
         eventCount++;
         nextEvent = currentTime - 60;
         if (eventCount == 1)
-            spawnTimer = 4f;
+        {
+            spawnTimer = 2f;
+        }
         if (eventCount == 2)
         {
             enemyArray = new GameObject[3];

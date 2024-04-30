@@ -8,17 +8,28 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private new Camera camera;
-    [SerializeField] private float moveSpeed = 5;
-    public int xp = 0;
-    public int nextLevelXP = 1;
-    public int level = 1;
-    //[SerializeField] private TrailRenderer trail;
+    private PlayerMeleeTest playerMelee;
+    private Level levelUp;
     public Animator animator;
-    
     Timer timer;
     private Rigidbody rb;
 
-    public int health = 100;
+    public int baseHealth = 100;
+    public int maxHealth;
+    public int currentHealth;
+    public int flatDR = 0;
+    public float percentDR = 0;
+    public int baseDamage = 5;
+    public int damage;
+    public float baseAttackSpeed = 2f;
+    public float baseAttackSpeedRatio = 0f;
+    public float attackSize = 1;
+    public float moveSpeed = 5f;
+
+    public int xp = 0;
+    public int nextLevelXP = 1;
+    public int level = 1;
+    
     public bool dead = false;
 
     private Vector2 inputVector;
@@ -30,7 +41,12 @@ public class PlayerController : MonoBehaviour
         camera = Camera.main;
         animator = GetComponent<Animator>();
         timer = FindObjectOfType<Timer>();
-        //trail = GetComponent<TrailRenderer>();
+        playerMelee = FindObjectOfType<PlayerMeleeTest>();
+        levelUp = GetComponent<Level>();
+
+        maxHealth = baseHealth;
+        currentHealth = maxHealth;
+        damage = baseDamage;
     }
     private void Update()
     {
@@ -46,6 +62,11 @@ public class PlayerController : MonoBehaviour
         
         var targetVector = new Vector3(inputVector.x, 0, inputVector.y);
 
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            playerMelee.UpdateStats();
+        }
+
         if (!dead)
         {
             MovePlayer(targetVector);
@@ -53,7 +74,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isMoving", isMoving);
             if (xp >= nextLevelXP)
             {
-                Debug.Log("LEVEL UP");
+                levelUp.LevelUp();
+                UpdateStats();
                 nextLevelXP += nextLevelXP + 1;
                 level++;
             }
@@ -83,12 +105,25 @@ public class PlayerController : MonoBehaviour
         var targetPosition = transform.position + targetVector * speed;
         transform.position = targetPosition;
     }
+
+    public void UpdateStats()
+    {
+        
+    }
     public void TakeDamage(int value)
     {
-        health -= value;
+        float reduction = (value * (percentDR / 100f));
+        if (reduction < 1) //We cannot have the player getting that +1 HP every time, we're mean.
+        {
+            int roundedReduction = Mathf.CeilToInt(reduction);
+            reduction = roundedReduction;
+        }
+        int adjustedDamage = value - (int)reduction;
+        adjustedDamage -= flatDR;
+        currentHealth -= adjustedDamage;
         timer.HardModeAdjust(false);
-        Debug.Log("Player Health Is " + health);
-        if(health <= 0 && !dead)
+        Debug.Log("Player Health Is " + currentHealth);
+        if(currentHealth <= 0 && !dead)
         {
             dead = true;
             animator.SetTrigger("Death");

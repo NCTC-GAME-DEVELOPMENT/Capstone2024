@@ -53,7 +53,7 @@ public class Level : MonoBehaviour
         }
     }
 
-    private void LevelUp()
+    public void LevelUp()
     {
         if (selectedUpgrades == null) { selectedUpgrades = new List<UpgradeData>(); }
         selectedUpgrades.Clear();

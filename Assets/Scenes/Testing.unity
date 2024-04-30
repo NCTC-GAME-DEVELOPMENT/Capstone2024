@@ -862,7 +862,7 @@ MonoBehaviour:
   - {fileID: 169218729}
   - {fileID: 47209132}
   - {fileID: 1944481200}
-  spawnTimer: 5
+  spawnTimer: 4
   StatsChartRow: 0
   hardMode: 1
   hardModeLevel: 0
