@@ -19,7 +19,7 @@ public class YoyoCollider : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("enemy"))
+        if (other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("boss"))
         {
             Debug.Log("hit:" + other.gameObject.name);
             EnemyBase enemyBase = other.GetComponent<EnemyBase>();

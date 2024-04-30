@@ -13,7 +13,8 @@ public class ShieldWeapon : WeaponBase
     public override void Update()
     {
         base.Update();
-        //transform.rotation = weaponPosition.GetPlayerRotation();
+        //GetComponentInParent<WeaponPosition>();
+        //transform.rotation = weaponPosition.playerRotation;
 
     }
 
