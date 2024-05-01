@@ -263,7 +263,7 @@ MonoBehaviour:
     damage: 0
     contactDamage: 20
   hasSplit: 0
-  slimePool: {fileID: 5376273017327325579, guid: b1c0215f0f5f5fe439191ef616c4b969, type: 3}
+  slimePool: {fileID: 6230202263123156578, guid: dde9283602f42414a941a3a3c4cc9f46, type: 3}
 --- !u!195 &4632568692250963970
 NavMeshAgent:
   m_ObjectHideFlags: 0
