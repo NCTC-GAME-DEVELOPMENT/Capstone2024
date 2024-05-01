@@ -250,8 +250,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 52
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!114 &3196758802295681087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c34e5645bc5389448aec4abe3e21baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xpPrefab: {fileID: 5684695555102086281, guid: 4fcb680b4ae2616468c139e92fb7e3e4, type: 3}
+  xpPrefab:
+  - {fileID: 6157711694175870726, guid: 9118733d3b717914f9c84b56cd0a1840, type: 3}
+  - {fileID: 7466771459601227652, guid: c4f2598ac1768124fa4590e32975e4a2, type: 3}
+  - {fileID: 3900440495985814746, guid: f68f3f935f725124aa62f714ae2e67c9, type: 3}
+  - {fileID: 5628755755957436453, guid: 420d3af4ed0fef44c8603cc5fa04dea1, type: 3}
+  - {fileID: 5684695555102086281, guid: 4fcb680b4ae2616468c139e92fb7e3e4, type: 3}
   boss: 0
   damage: 0
   StatsChart:

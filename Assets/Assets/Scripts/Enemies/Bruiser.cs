@@ -10,6 +10,7 @@ public class Bruiser : EnemyBase
     [SerializeField] private GameObject warningAngle;
     private EnemyAttack enemyAttack;
 
+    Vector3 directionToPlayer;
     private float rotationSpeed = 200f;
 
     private bool windingUp = true;
@@ -70,10 +71,8 @@ public class Bruiser : EnemyBase
 
             if (!faceCheck)
             {
-                Vector3 directionToPlayer = playerObj.transform.position - transform.position;
+                directionToPlayer = playerObj.transform.position - transform.position;
                 directionToPlayer.y = 0f;
-
-                transform.rotation = Quaternion.LookRotation(directionToPlayer);
 
                 faceCheck = true;
             }
@@ -114,6 +113,7 @@ public class Bruiser : EnemyBase
                 think = Idle;
             }
         }
+        transform.rotation = Quaternion.LookRotation(directionToPlayer);
     }
 
     void Idle()

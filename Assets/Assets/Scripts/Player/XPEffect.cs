@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class XPEffect : MonoBehaviour
 {
-    private int xpAmount = 1;
+    [SerializeField] private int xpAmount;
     private float rotationSpeed = 100f;
 
     private void Update()

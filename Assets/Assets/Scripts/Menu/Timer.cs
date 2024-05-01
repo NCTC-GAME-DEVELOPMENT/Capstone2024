@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -20,9 +21,10 @@ public class Timer : MonoBehaviour
     public GameObject bossPrefab;
 
     public Transform[] spawnPoints;
-    public float spawnTimer = 4f;
+    public float spawnTimer = 3f;
 
     public int StatsChartRow = 0;
+    public int xpLevel = 0;
 
     public bool hardMode = false;
     public int hardModeLevel = 0;
@@ -138,7 +140,7 @@ public class Timer : MonoBehaviour
         nextEvent = currentTime - 60;
         if (eventCount == 1)
         {
-            spawnTimer = 2f;
+
         }
         if (eventCount == 2)
         {
@@ -152,10 +154,12 @@ public class Timer : MonoBehaviour
             enemyArray = new GameObject[2];
             enemyArray[0] = crawlerPrefab;
             enemyArray[1] = slimePrefab;
+            xpLevel++;
         }
         if (eventCount == 4)
         {
             SpawnEnemy(bruiserPrefab);
+            spawnTimer = 2.5f;
         }
         if (eventCount == 5)
         {
@@ -164,10 +168,113 @@ public class Timer : MonoBehaviour
             enemyArray[1] = slimePrefab;
             enemyArray[2] = rangedPrefab;
         }
+        if (eventCount == 6)
+        {
+            enemyArray = new GameObject[4];
+            enemyArray[0] = crawlerPrefab;
+            enemyArray[1] = slimePrefab;
+            enemyArray[2] = rangedPrefab;
+            enemyArray[3] = rangedPrefab;
+            xpLevel++;
+        }
+        if (eventCount == 7)
+        {
+
+        }
+        if (eventCount == 8) 
+        {
+            SlimeEvent();
+            spawnTimer = 2f;
+        }
+        if (eventCount == 9)
+        {
+            enemyArray = new GameObject[4];
+            enemyArray[0] = crawlerPrefab;
+            enemyArray[1] = slimePrefab;
+            enemyArray[2] = rangedPrefab;
+            enemyArray[3] = bruiserPrefab;
+            xpLevel++;
+        }
+        if (eventCount == 10)
+        {
+
+        }
+        if (eventCount == 11)
+        {
+            enemyArray = new GameObject[4];
+            enemyArray[0] = slimePrefab;
+            enemyArray[1] = slimePrefab;
+            enemyArray[2] = rangedPrefab;
+            enemyArray[3] = bruiserPrefab;
+        }
+        if (eventCount == 12)
+        {
+            ArcherEvent();
+            spawnTimer = 1.5f;
+            xpLevel++;
+        }
+        if (eventCount == 13)
+        {
+            enemyArray = new GameObject[3];
+            enemyArray[0] = slimePrefab;
+            enemyArray[1] = rangedPrefab;
+            enemyArray[2] = bruiserPrefab;
+        }
+        if (eventCount == 14)
+        {
+            
+        }
+        if (eventCount == 15)
+        {
+            KnightEvent();
+        }
+        if (eventCount == 16)
+        {
+            spawnTimer = 1f;
+        }
+        if (eventCount == 17)
+        {
+            enemyArray = new GameObject[4];
+            enemyArray[0] = slimePrefab;
+            enemyArray[1] = rangedPrefab;
+            enemyArray[2] = bruiserPrefab;
+            enemyArray[3] = bruiserPrefab;
+        }
+        if (eventCount == 18)
+        {
+            spawnTimer = 0.5f;
+        }
+        if (eventCount == 19)
+        {
+
+        }
         if (eventCount == 20)
         {
             SpawnEnemy(bossPrefab);
         }
 
+        void SlimeEvent()
+        {
+            for (int i = 28; i >= 0; i--)
+            {
+                SpawnEnemy(slimePrefab);
+            }
+        }
+
+        void ArcherEvent()
+        {
+            for (int i = 20; i >= 0; i--)
+            {
+                SpawnEnemy(rangedPrefab);
+            }
+        }
+
+        void KnightEvent()
+        {
+            for (int i = 12; i >= 0; i--)
+            {
+                SpawnEnemy(bruiserPrefab);
+            }
+        }
     }
 }

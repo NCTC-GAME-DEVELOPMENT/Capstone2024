@@ -11,7 +11,7 @@ public class EnemyBase : MonoBehaviour
     protected Timer timer;
     protected Animator animator;
     protected Rigidbody rb;
-    [SerializeField] protected GameObject xpPrefab;
+    [SerializeField] protected GameObject[] xpPrefab;
 
     public bool boss = false;
     protected bool inPlayArea = false;
@@ -23,6 +23,7 @@ public class EnemyBase : MonoBehaviour
     private float contactInterval = 1f;
 
     protected int StatsChartRow;
+    protected int xpLevel;
     public EnemyStatsRow[] StatsChart; 
 
     protected delegate void ThinkFunction();
@@ -42,6 +43,7 @@ public class EnemyBase : MonoBehaviour
         timer = FindObjectOfType<Timer>();
         animator = GetComponent<Animator>();
         StatsChartRow = timer.StatsChartRow;
+        xpLevel = timer.xpLevel;
         playerController = FindObjectOfType<PlayerController>();
         playerObj = FindObjectOfType<PlayerController>().gameObject;
         health = StatsChart[StatsChartRow].health;
@@ -88,7 +90,7 @@ public class EnemyBase : MonoBehaviour
     {
         Destroy(gameObject);
         timer.HardModeAdjust(true);
-        GameObject xp = Instantiate(xpPrefab, transform.position, Quaternion.identity);
+        GameObject xp = Instantiate(xpPrefab[xpLevel], transform.position, Quaternion.identity);
     }
 
     protected virtual void OnTriggerEnter(Collider other)

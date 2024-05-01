@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     public int xp = 0;
     public int nextLevelXP = 1;
+    private int prevLevel = 1;
     public int level = 1;
     
     public bool dead = false;
@@ -72,13 +73,14 @@ public class PlayerController : MonoBehaviour
             MovePlayer(targetVector);
             MouseRotate();
             animator.SetBool("isMoving", isMoving);
-            if (xp >= nextLevelXP)
-            {
+            if (xp >= nextLevelXP) //If you were to level up twice with one XP gem it only gives the selection popup once
+            {                      //This shouldn't be an issue since it shouldn't be possible to have that happen past the first handful of levels.
                 levelUp.LevelUp();
                 UpdateStats();
                 nextLevelXP += nextLevelXP + 1;
                 level++;
             }
+
         }
     }
 
@@ -108,7 +110,16 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateStats()
     {
-        
+        maxHealth += 5;
+        currentHealth += 5;
+        flatDR += 1;
+        percentDR += 1;
+        damage += 5;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        playerMelee.damage = damage;
     }
     public void TakeDamage(int value)
     {
