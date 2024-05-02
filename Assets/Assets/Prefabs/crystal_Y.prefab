@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8219734116505646284}
   - component: {fileID: 7832783458237635661}
   - component: {fileID: 5681566224980716386}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: crystal_Y
   m_TagString: XP
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 3707793042070833431}
   - component: {fileID: 1285193316489233384}
   - component: {fileID: 1098631277237418770}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

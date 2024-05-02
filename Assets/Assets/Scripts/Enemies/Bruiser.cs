@@ -126,15 +126,6 @@ public class Bruiser : EnemyBase
             animator.SetTrigger("isIdle");
         }
 
-
-        //Vector3 directionToPlayer = transform.position - playerObj.transform.position;
-        //directionToPlayer.y = 0f;
-
-        //Vector3 moveDirection = directionToPlayer;
-        //Vector3 newPosition = transform.position + moveDirection * navMeshAgent.speed * Time.deltaTime;
-
-        //navMeshAgent.SetDestination(newPosition);
-
         cooldown -= Time.deltaTime;
         if (cooldown <= 0)
         {

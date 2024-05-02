@@ -66,16 +66,17 @@ public class Slime : EnemyBase
                 GameObject smallSlime = Instantiate(gameObject, transform.position, transform.rotation);
                 smallSlime.transform.localScale *= 0.5f;
 
+                smallSlime.GetComponent<ColorChange>().ChangeToOriginal();
+
                 smallSlime.GetComponent<Slime>().hasSplit = true;
                 smallSlime.GetComponent<EnemyBase>().enabled = true;
                 smallSlime.GetComponent<NavMeshAgent>().enabled = true;
             }
         }
 
-        Vector3 spawnPosition = new Vector3(transform.position.x, -.25f, transform.position.z);
+        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
         GameObject damagingCircle = Instantiate(slimePool, spawnPosition, Quaternion.identity);
         Destroy(damagingCircle, 5f);
     }
-
 }

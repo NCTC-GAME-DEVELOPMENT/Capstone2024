@@ -1141,6 +1141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 350677370482603298}
+  - component: {fileID: 7314654637658895980}
   - component: {fileID: 1212672046900664307}
   - component: {fileID: 5168181948996252905}
   - component: {fileID: 4443705656321325400}
@@ -1180,6 +1181,40 @@ Transform:
   - {fileID: 4432603765990286964}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7314654637658895980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731688415402513781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0231521cc7609a4f9adecd665eb6ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToChange:
+  - {fileID: 4900942242779543838}
+  - {fileID: 6417691851923892258}
+  - {fileID: 2684529362063101527}
+  - {fileID: 4954420382554113386}
+  - {fileID: 7099537327885227894}
+  - {fileID: 8114100825953540617}
+  - {fileID: 5292920164591343500}
+  - {fileID: 7350568822607730503}
+  - {fileID: 8183903006438981223}
+  - {fileID: 1767124426435187204}
+  originalMaterials:
+  - {fileID: 4988920959578109440, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
+  - {fileID: 980463900970666947, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
+  - {fileID: 4804760862751498083, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
+  - {fileID: 1612691898555355990, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
+  - {fileID: 1929371085657448079, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
+  - {fileID: -8172218323701257853, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
+  - {fileID: 1400260186560454055, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
+  - {fileID: -5029918928723835883, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
+  - {fileID: 4839996857416192198, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
+  - {fileID: 4102844437895318947, guid: 71c5e6680bf151746a364c8af54324a1, type: 3}
 --- !u!136 &1212672046900664307
 CapsuleCollider:
   m_ObjectHideFlags: 0

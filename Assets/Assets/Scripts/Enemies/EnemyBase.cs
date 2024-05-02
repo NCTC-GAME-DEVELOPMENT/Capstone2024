@@ -11,6 +11,7 @@ public class EnemyBase : MonoBehaviour
     protected Timer timer;
     protected Animator animator;
     protected Rigidbody rb;
+    protected ColorChange colorChange;
     [SerializeField] protected GameObject[] xpPrefab;
 
     public bool boss = false;
@@ -46,6 +47,7 @@ public class EnemyBase : MonoBehaviour
         xpLevel = timer.xpLevel;
         playerController = FindObjectOfType<PlayerController>();
         playerObj = FindObjectOfType<PlayerController>().gameObject;
+        colorChange = GetComponent<ColorChange>();
         health = StatsChart[StatsChartRow].health;
         contactDamage = StatsChart[StatsChartRow].contactDamage;
         damage = StatsChart[StatsChartRow].damage;
@@ -80,6 +82,7 @@ public class EnemyBase : MonoBehaviour
         if (inPlayArea)
         {
             health -= damage;
+            colorChange.ChangeToRed();
             Debug.Log("enemy is at " + health + "HP");
             if (health <= 0)
                 Death();
