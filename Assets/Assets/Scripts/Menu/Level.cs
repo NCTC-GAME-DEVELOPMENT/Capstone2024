@@ -13,7 +13,7 @@ public class Level : MonoBehaviour
     {
         get
         {
-            return level * 10;
+            return level;
         }
     }
 
@@ -35,7 +35,7 @@ public class Level : MonoBehaviour
     private void Start()
     {
         experienceBar.SetLevelText(level);
-        experienceBar.UpdateExperienceSlider(experience, TO_LEVEL_UP);
+        //experienceBar.UpdateExperienceSlider(experience, TO_LEVEL_UP);
     }
 
     public void AddExperience(int amount)
@@ -63,6 +63,7 @@ public class Level : MonoBehaviour
         experience -= TO_LEVEL_UP;
         level += 1;
         experienceBar.SetLevelText(level);
+        //experienceBar.UpdateExperienceSlider(experience, TO_LEVEL_UP);
     }
 
     //Level Up Test Button

@@ -6,7 +6,6 @@ public class XPEffect : MonoBehaviour
 {
     [SerializeField] private int xpAmount;
     private float rotationSpeed = 100f;
-
     private void Update()
     {
         transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);

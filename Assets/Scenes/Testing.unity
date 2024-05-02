@@ -4376,6 +4376,10 @@ PrefabInstance:
       propertyPath: nextLevelXP
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4455321841372434896, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
+      propertyPath: experienceBar
+      value: 
+      objectReference: {fileID: 706515137}
     - target: {fileID: 1554592660087212295, guid: 213676fa5a1e0064d8a7c0db87b6f3d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private new Camera camera;
+    [SerializeField] ExperienceBar experienceBar;
     private PlayerMeleeTest playerMelee;
     private Level levelUp;
     public Animator animator;
@@ -48,9 +49,12 @@ public class PlayerController : MonoBehaviour
         maxHealth = baseHealth;
         currentHealth = maxHealth;
         damage = baseDamage;
+
+        experienceBar.UpdateExperienceSlider(xp, nextLevelXP);
     }
     private void Update()
     {
+        experienceBar.UpdateExperienceSlider(xp, nextLevelXP);
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 
@@ -77,6 +81,7 @@ public class PlayerController : MonoBehaviour
             {                      //This shouldn't be an issue since it shouldn't be possible to have that happen past the first handful of levels.
                 levelUp.LevelUp();
                 UpdateStats();
+                xp -= nextLevelXP;
                 nextLevelXP += nextLevelXP + 1;
                 level++;
             }
