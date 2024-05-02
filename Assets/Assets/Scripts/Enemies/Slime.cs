@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +9,9 @@ public class Slime : EnemyBase
 {
     public bool hasSplit;
     public GameObject slimePool;
+    private float animTime = 0.583f;
+    private float idleTime = 0.583f;
+    private bool trigger = false;
     void Start()
     {
         base.InitializeObject();
@@ -23,6 +28,32 @@ public class Slime : EnemyBase
         }
     }
 
+    protected override void MoveToPlayer()
+    {
+        base.MoveToPlayer();
+        animTime -= Time.deltaTime;
+        if (animTime <= 0)
+        {
+            navMeshAgent.speed = 0f;
+            if (!trigger)
+            {
+                animator.SetTrigger("isIdle");
+                trigger = true;
+            }
+            idleTime -= Time.deltaTime;
+            if (idleTime <= 0)
+            {
+                trigger = false;
+                animator.SetTrigger("isMoving");
+                animTime = 0.583f;
+                idleTime = 0.583f;
+            }
+        }
+        if (animTime > 0)
+        {
+            navMeshAgent.speed = 3f;
+        }
+    }
     protected override void Death()
     {
         base.Death();
