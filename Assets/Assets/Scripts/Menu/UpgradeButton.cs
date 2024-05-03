@@ -14,8 +14,8 @@ public class UpgradeButton : MonoBehaviour
     public void Set(UpgradeData upgradeData)
     {
         icon.sprite = upgradeData.icon;
-        upgradeName.text = upgradeData.description;
-        upgradeData.name = upgradeData.name;
+        upgradeName.text = upgradeData.name;
+        upgradeDescription.text = upgradeData.description;
     }
 
     internal void Clean()

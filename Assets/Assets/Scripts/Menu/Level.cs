@@ -80,14 +80,24 @@ public class Level : MonoBehaviour
     {
         List<UpgradeData> upgradeList = new List<UpgradeData>();
 
+        List<UpgradeData> unusedUpgradeList = new List<UpgradeData>();
+
         if (count > upgrades.Count)
         {
             count = upgrades.Count;
         }
 
+        for(int i = 0; i < upgrades.Count; i++)
+        {
+            unusedUpgradeList.Add(upgrades[i]);
+        }
+
         for(int i = 0; i < count; i++)
         {
-            upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+            int random = Random.Range(0, unusedUpgradeList.Count);
+            upgradeList.Add(unusedUpgradeList[random]);
+            //upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+            unusedUpgradeList.RemoveAt(random);
         }
         
         return upgradeList;
