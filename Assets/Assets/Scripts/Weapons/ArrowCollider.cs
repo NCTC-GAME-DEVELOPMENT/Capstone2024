@@ -7,11 +7,12 @@ public class ArrowCollider : MonoBehaviour
     public int damage;
     public int pierce;
     int hitcount = 0;
+    public float speed;
 
-    //void Update()
-    //{
-        
-    //}
+    void Update()
+    {
+        transform.Translate((Vector3.forward * Time.deltaTime) * speed);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

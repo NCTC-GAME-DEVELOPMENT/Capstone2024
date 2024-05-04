@@ -56,3 +56,4 @@ MonoBehaviour:
     coneRange: 0
   arrowPrefab: {fileID: 55136503355368849, guid: 9daa66dc2c361264cbf6a8a6b93deeca, type: 3}
   wpn_Arrow: {fileID: 6567224847918256295}
+  arrowOrigin: {fileID: 5669020013288431201, guid: 27f7d1b850472334993bc4aca9bcb595, type: 3}

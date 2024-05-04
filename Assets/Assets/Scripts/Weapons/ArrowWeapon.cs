@@ -7,7 +7,7 @@ public class ArrowWeapon : WeaponBase
 {
     [SerializeField] GameObject arrowPrefab;
     [SerializeField] Transform wpn_Arrow;
-    //GameObject arrowOrigin;
+    [SerializeField] GameObject arrowOrigin;
     string ARROW_SPAWN = "arrow_Origin";
     WeaponPosition weaponPosition;
 
@@ -15,8 +15,8 @@ public class ArrowWeapon : WeaponBase
     public override void Update()
     {
         base.Update();
-        //weaponPosition = GetComponentInParent<WeaponPosition>();
-        //transform.rotation = weaponPosition.playerRotation;
+        weaponPosition = GetComponentInParent<WeaponPosition>();
+        transform.rotation = weaponPosition.playerRotation;
     }
 
     public override void Attack()
@@ -25,26 +25,38 @@ public class ArrowWeapon : WeaponBase
         //float increment = weaponStats.coneAngle / weaponStats.amount;
         weaponPosition = GetComponentInParent<WeaponPosition>();
         //transform.rotation = weaponPosition.playerRotation;
-        GameObject arrowOrigin = Instantiate(new GameObject(ARROW_SPAWN), transform.position, weaponPosition.playerRotation);
-        Transform originTransform = arrowOrigin.transform;
+        
+        //arrowOrigin.transform.SetPositionAndRotation(transform.position, weaponPosition.playerRotation);
+        GameObject arrowSpawn = Instantiate(arrowOrigin);
+        arrowSpawn.transform.position = transform.position;
+        
+        //Transform originTransform = arrowOrigin.transform;
 
         for (int i = 0; i < weaponStats.amount; i++)
         {
             
             //float angle = i * ((Mathf.PI*2)/4) / weaponStats.amount;
             float angle = ((weaponStats.coneAngle * Mathf.Deg2Rad) / weaponStats.amount) * i;
+            float angleOffset = (weaponStats.coneAngle / weaponStats.amount) * i;
             float x = Mathf.Cos(angle) * weaponStats.coneRange;
             float z = Mathf.Sin(angle) * weaponStats.coneRange;
-            float angleDegrees = 90/ (i+1);
+            float angleDegrees = 90 - angleOffset;
             Vector3 pos = transform.position + new Vector3(x, 1, z);
             Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
-            GameObject arrowObject = Instantiate(arrowPrefab, pos, rot);
+            GameObject arrowObject = Instantiate(arrowPrefab, pos, rot, arrowSpawn.transform);
 
             ArrowCollider arrowCollider = arrowObject.GetComponent<ArrowCollider>();
             arrowCollider.damage = weaponStats.damage;
             arrowCollider.pierce = weaponStats.pierce;
+            arrowCollider.speed = weaponStats.speed;
 
             //arcStart -= increment;
         }
+        //arrowSpawn.transform.SetPositionAndRotation(transform.position, weaponPosition.playerRotation);
+        Quaternion pRotation = weaponPosition.playerRotation;
+        float pRotationY = pRotation.y;
+        arrowSpawn.transform.rotation = weaponPosition.playerRotation * Quaternion.AngleAxis(-90, Vector3.up);
+        //arrowSpawn.transform.rotation = Quaternion.AngleAxis(-90 * pRotationY, Vector3.up);
+        
     }
 }
