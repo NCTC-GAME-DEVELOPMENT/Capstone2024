@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Shield Damage 1
   m_EditorClassIdentifier: 
   upgradeType: 0
-  Name: 
-  icon: {fileID: 0}
-  description: 
-  weaponData: {fileID: 0}
+  Name: Shield Spikes
+  icon: {fileID: 21300000, guid: 4e4261e43354c51459d718c0f5a9bbe7, type: 3}
+  description: Increases shield damage by 10
+  weaponData: {fileID: 11400000, guid: bc69560eba1d11145b0459baad4bed04, type: 2}
   weaponUpgradeStats:
-    damage: 0
+    damage: 10
     amount: 0
     speed: 0
     pierce: 0
@@ -26,4 +26,5 @@ MonoBehaviour:
     attackDuration: 0
     coneAngle: 0
     coneRange: 0
-  nextUpgradeData: []
+  nextUpgradeData:
+  - {fileID: 11400000, guid: 282dcddce2ea77f4ca5707a70fd05638, type: 2}
