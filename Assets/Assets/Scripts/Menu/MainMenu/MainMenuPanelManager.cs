@@ -7,6 +7,8 @@ public class MainMenuPanelManager : MonoBehaviour
 {
     [SerializeField] GameObject mainPanel;
     [SerializeField] GameObject characterPanel;
+    [SerializeField] GameObject creditsPanel;
+    
 
 
     public void StartButton()
@@ -14,6 +16,18 @@ public class MainMenuPanelManager : MonoBehaviour
         SceneManager.LoadScene("Testing");
         //mainPanel.SetActive(false);
         //characterPanel.SetActive(true);
+    }
+
+    public void CreditsButton()
+    {
+        mainPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+    }
+
+    public void BackToMenuButton()
+    {
+        creditsPanel.SetActive(false);
+        mainPanel.SetActive(true);
     }
 
 
