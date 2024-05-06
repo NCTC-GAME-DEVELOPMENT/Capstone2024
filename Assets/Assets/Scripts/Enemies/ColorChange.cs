@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class ColorChange : MonoBehaviour
@@ -15,8 +16,6 @@ public class ColorChange : MonoBehaviour
 
             if (renderer != null)
             {
-                originalMaterials[i] = renderer.material;
-
                 Material redMaterial = new Material(Shader.Find("Standard"));
                 redMaterial.color = Color.red;
 

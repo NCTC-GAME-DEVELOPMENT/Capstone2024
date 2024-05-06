@@ -180,6 +180,12 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Death");
             rb.constraints = RigidbodyConstraints.FreezeAll;
             Debug.Log("Death");
+            OnDeath(); 
         }
+    }
+
+    public void OnDeath()
+    {
+        EndPanelManager.reference.LoseGame(); 
     }
 }

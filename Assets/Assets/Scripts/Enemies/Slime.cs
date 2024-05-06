@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -65,7 +68,6 @@ public class Slime : EnemyBase
 
                 GameObject smallSlime = Instantiate(gameObject, transform.position, transform.rotation);
                 smallSlime.transform.localScale *= 0.5f;
-
                 smallSlime.GetComponent<ColorChange>().ChangeToOriginal();
                 smallSlime.GetComponent<Animator>().enabled = true;
                 smallSlime.GetComponent<Slime>().hasSplit = true;
@@ -74,9 +76,17 @@ public class Slime : EnemyBase
             }
         }
 
+        /*Ray ray = camera.ScreenPointToRay(mousePosition);
+        LayerMask groundLayerMask = LayerMask.GetMask("Ground");
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f, groundLayerMask))
+        {
+            var target = hitInfo.point;
+            target.y = transform.position.y;
+            transform.LookAt(target);
+        }*/
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
         GameObject damagingCircle = Instantiate(slimePool, spawnPosition, Quaternion.identity);
         Destroy(damagingCircle, 5f);
+
     }
 }
