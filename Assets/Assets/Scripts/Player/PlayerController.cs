@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private new Camera camera;
     [SerializeField] ExperienceBar experienceBar;
+    [SerializeField] HpBar hpBar;
     private AudioHandler audioHandler;
     private PostProcessVolume postProcessVolume;
     private Vignette vignette;
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
         damage = baseDamage;
 
         experienceBar.UpdateExperienceSlider(xp, nextLevelXP);
+        hpBar.UpdateHpSlider(currentHealth, maxHealth);
     }
     private void Update()
     {
@@ -164,6 +166,7 @@ public class PlayerController : MonoBehaviour
             currentHealth -= adjustedDamage;
         }
         Debug.Log("Player Health Is " + currentHealth);
+        hpBar.UpdateHpSlider(currentHealth, maxHealth);
 
         timer.HardModeAdjust(false);
 
