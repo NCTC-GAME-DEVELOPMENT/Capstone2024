@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8942830410257377536}
   - component: {fileID: 2861933285773966832}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: D_oilSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 7433745332299865192}
   - component: {fileID: 3215934599957210240}
   - component: {fileID: 8352187274693098714}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

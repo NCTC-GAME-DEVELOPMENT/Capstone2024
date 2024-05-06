@@ -85,9 +85,10 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
-        audioHandler.EnemyDamageSound(damageSound);
+        
         if (inPlayArea)
         {
+            audioHandler.EnemyDamageSound(damageSound);
             health -= damage;
             colorChange.ChangeToRed();
             Debug.Log("enemy is at " + health + "HP");
@@ -100,7 +101,7 @@ public class EnemyBase : MonoBehaviour
     {
         OnDeath?.Invoke();      
         timer.HardModeAdjust(true);
-        GameObject xp = Instantiate(xpPrefab[xpLevel], transform.position, Quaternion.identity);
+        Instantiate(xpPrefab[xpLevel], transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 260266357186457633}
   - component: {fileID: 4634599756529493132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: B_lightPole
   m_TagString: wall
   m_Icon: {fileID: 0}
