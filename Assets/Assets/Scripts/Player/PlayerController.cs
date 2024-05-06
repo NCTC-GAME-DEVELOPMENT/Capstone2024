@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public int baseHealth = 100;
     public int maxHealth;
     public int currentHealth;
+    public int healthRegen;
+    public float regenTime = 5;
     public int flatDR = 0;
     public float percentDR = 0;
     public int baseDamage = 5;
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour
     public float baseAttackSpeedRatio = 0f;
     public float attackSize = 1;
     public float moveSpeed = 5f;
+
+    public float regenTimer;
 
     public int xp = 0;
     public int nextLevelXP = 1;
@@ -114,6 +118,15 @@ public class PlayerController : MonoBehaviour
             vignette.intensity.value = endIntensity;
         }
 
+        regenTimer -= Time.deltaTime;
+        if (regenTimer <= 0)
+        {
+            if(currentHealth <= maxHealth) currentHealth += healthRegen;
+            if (currentHealth > maxHealth) currentHealth = maxHealth;
+            hpBar.UpdateHpSlider(currentHealth, maxHealth);
+
+            regenTimer = regenTime;
+        }
     }
 
     private void MouseRotate()
@@ -187,5 +200,22 @@ public class PlayerController : MonoBehaviour
     public void OnDeath()
     {
         EndPanelManager.reference.LoseGame(); 
+    }
+
+    public void UpgradeStats(PlayerStats upgradePlayerStats)
+    {
+        baseHealth += upgradePlayerStats.baseHealth;
+        maxHealth += upgradePlayerStats.maxHealth;
+        currentHealth += upgradePlayerStats.currentHealth;
+        healthRegen += upgradePlayerStats.healthRegen;
+        regenTime += upgradePlayerStats.regenTime;
+        flatDR += upgradePlayerStats.flatDR;
+        percentDR += upgradePlayerStats.percentDR;
+        baseDamage += upgradePlayerStats.baseDamage;
+        damage += upgradePlayerStats.damage;
+        baseAttackSpeed += upgradePlayerStats.baseAttackSpeed;
+        baseAttackSpeedRatio += upgradePlayerStats.baseAttackSpeedRatio;
+        attackSize += upgradePlayerStats.attackSize;
+        moveSpeed += upgradePlayerStats.moveSpeed;
     }
 }

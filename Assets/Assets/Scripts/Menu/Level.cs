@@ -20,6 +20,7 @@ public class Level : MonoBehaviour
     [SerializeField] List<UpgradeData> upgrades;
 
     [SerializeField] UpgradePanelManager upgradePanel;
+    [SerializeField] PlayerController playerController;
 
 
     List<UpgradeData> selectedUpgrades;
@@ -122,6 +123,8 @@ public class Level : MonoBehaviour
             case UpgradeType.ItemUnlock:
                 break;
             case UpgradeType.SkillUpgrade:
+                playerController.UpgradeStats(upgradeData.playerUpgradeStats);
+                AddAvailableUpgrades(upgradeData.nextUpgradeData);
                 break;
             case UpgradeType.SkillUnlock:
                 break;
