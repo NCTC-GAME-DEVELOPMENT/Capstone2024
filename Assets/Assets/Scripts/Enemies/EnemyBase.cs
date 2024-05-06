@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events; 
 
 public class EnemyBase : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class EnemyBase : MonoBehaviour
 
     protected delegate void ThinkFunction();
     protected ThinkFunction think;
+
+    public UnityEvent OnDeath; 
 
     // Start is called before the first frame update
     private void Start()
@@ -95,9 +98,10 @@ public class EnemyBase : MonoBehaviour
     
     protected virtual void Death()
     {
-        Destroy(gameObject);
+        OnDeath?.Invoke();      
         timer.HardModeAdjust(true);
         GameObject xp = Instantiate(xpPrefab[xpLevel], transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
