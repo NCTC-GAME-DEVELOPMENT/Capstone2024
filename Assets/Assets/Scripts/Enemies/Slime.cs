@@ -84,14 +84,9 @@ public class Slime : EnemyBase
             target.y = transform.position.y;
             transform.LookAt(target);
         }*/
+        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        GameObject damagingCircle = Instantiate(slimePool, spawnPosition, Quaternion.identity);
+        Destroy(damagingCircle, 5f);
 
-        RaycastHit hit;
-        LayerMask groundLayerMask = LayerMask.GetMask("Ground");
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayerMask))
-        {
-            GameObject damagingCircle = Instantiate(slimePool, hit.point, Quaternion.identity);
-            Destroy(damagingCircle, 5f);
-        }
-        //Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 }
