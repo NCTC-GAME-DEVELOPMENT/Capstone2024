@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
+
+    public float gameSpeed = 2.0f;
+
+    public void Awake()
+    {
+        UnPauseGame(); 
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0f;
@@ -11,6 +19,6 @@ public class PauseManager : MonoBehaviour
 
     public void UnPauseGame()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = gameSpeed;
     }
 }
