@@ -39,7 +39,7 @@ public class EndPanelManager : MonoBehaviour
 
     public void OpenMenu()
     {
-        if (panel = winPanel) 
+        if (panel == winPanel) 
         { pauseManager.PauseGame(); }
         
         panel.SetActive(true);
