@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private new Camera camera;
     [SerializeField] ExperienceBar experienceBar;
+    private PostProcessVolume postProcessVolume;
+    private Vignette vignette;
     private PlayerMeleeTest playerMelee;
     private Level levelUp;
     public Animator animator;
@@ -31,7 +34,12 @@ public class PlayerController : MonoBehaviour
     public int nextLevelXP = 1;
     private int prevLevel = 1;
     public int level = 1;
-    
+
+    private float startIntensity = 0.5f;
+    private float endIntensity = 0f;
+    private float fadeDuration = 1f;
+    private float fadeTimer;
+
     public bool dead = false;
 
     private Vector2 inputVector;
@@ -45,6 +53,8 @@ public class PlayerController : MonoBehaviour
         timer = FindObjectOfType<Timer>();
         playerMelee = FindObjectOfType<PlayerMeleeTest>();
         levelUp = GetComponent<Level>();
+        postProcessVolume = camera.GetComponent<PostProcessVolume>();
+        postProcessVolume.profile.TryGetSettings(out vignette);
 
         maxHealth = baseHealth;
         currentHealth = maxHealth;
@@ -87,6 +97,19 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+
+        if (fadeTimer > 0)
+        {
+            fadeTimer -= Time.deltaTime;
+            float progress = Mathf.Clamp01(1f - (fadeTimer / fadeDuration));
+            float newIntensity = Mathf.Lerp(startIntensity, endIntensity, progress);
+            vignette.intensity.value = newIntensity;
+        }
+        if (fadeTimer <= 0)
+        {
+            vignette.intensity.value = endIntensity;
+        }
+
     }
 
     private void MouseRotate()
@@ -117,8 +140,6 @@ public class PlayerController : MonoBehaviour
     {
         maxHealth += 5;
         currentHealth += 5;
-        flatDR += 1;
-        percentDR += 1;
         damage += 5;
         if (currentHealth > maxHealth)
         {
@@ -129,22 +150,39 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int value)
     {
         float reduction = (value * (percentDR / 100f));
-        if (reduction < 1) //We cannot have the player getting that +1 HP every time, we're mean.
+        if (reduction < 1) //We cannot have the player getting that +1 HP every time.
         {
             int roundedReduction = Mathf.CeilToInt(reduction);
             reduction = roundedReduction;
         }
         int adjustedDamage = value - (int)reduction;
         adjustedDamage -= flatDR;
-        currentHealth -= adjustedDamage;
-        timer.HardModeAdjust(false);
+        if (adjustedDamage > 0)
+        {
+            currentHealth -= adjustedDamage;
+        }
         Debug.Log("Player Health Is " + currentHealth);
-        if(currentHealth <= 0 && !dead)
+
+        timer.HardModeAdjust(false);
+
+        vignette.intensity.value = startIntensity;
+        fadeTimer = fadeDuration;
+        //StartCoroutine(DisablePostProcessingAfterDelay());
+
+        if (currentHealth <= 0 && !dead)
         {
             dead = true;
             animator.SetTrigger("Death");
             rb.constraints = RigidbodyConstraints.FreezeAll;
             Debug.Log("Death");
         }
+    }
+    IEnumerator DisablePostProcessingAfterDelay()
+    {
+        // Wait for the effect duration
+        yield return new WaitForSeconds(1f); // Adjust as needed
+
+        // Disable the Post Process Volume to stop the effect
+        postProcessVolume.enabled = false;
     }
 }

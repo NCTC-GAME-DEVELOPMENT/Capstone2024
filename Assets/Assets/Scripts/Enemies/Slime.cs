@@ -67,7 +67,7 @@ public class Slime : EnemyBase
                 smallSlime.transform.localScale *= 0.5f;
 
                 smallSlime.GetComponent<ColorChange>().ChangeToOriginal();
-
+                smallSlime.GetComponent<Animator>().enabled = true;
                 smallSlime.GetComponent<Slime>().hasSplit = true;
                 smallSlime.GetComponent<EnemyBase>().enabled = true;
                 smallSlime.GetComponent<NavMeshAgent>().enabled = true;
