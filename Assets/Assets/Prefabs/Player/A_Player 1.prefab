@@ -287,7 +287,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 0}
-  upgrades: []
+  upgrades:
+  - {fileID: 11400000, guid: d59ea9f6c7688a847a8bcbde5a1b00b1, type: 2}
+  - {fileID: 11400000, guid: d07c1a91557dc9547b9142be00f4a458, type: 2}
+  - {fileID: 11400000, guid: c6f4df3c5bf5ecd4787aab8a8ad508c8, type: 2}
   upgradePanel: {fileID: 0}
   acquiredUpgrades: []
 --- !u!114 &7020434287091291378
@@ -389,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponObjectsContainer: {fileID: 0}
-  startingWeapon: {fileID: 11400000, guid: e9b06b41b87a1c941ba9ceb2d79429ee, type: 2}
+  startingWeapon: {fileID: 0}
 --- !u!81 &-4742233560407847072
 AudioListener:
   m_ObjectHideFlags: 0

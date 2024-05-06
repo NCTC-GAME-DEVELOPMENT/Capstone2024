@@ -26,3 +26,5 @@ MonoBehaviour:
     attackDuration: 0
     coneAngle: 0
     coneRange: 0
+  nextUpgradeData:
+  - {fileID: 11400000, guid: 2155d97db5c7863409e3b2baba30ba27, type: 2}

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c6d68cf0358de242a034ee4b44a2aaf, type: 3}
-  m_Name: Yoyo Damage
+  m_Name: Arrow 2 Damage 2
   m_EditorClassIdentifier: 
   upgradeType: 0
-  Name: Harder Yoyo
-  icon: {fileID: 21300000, guid: 7ff2b64411273b84fb126eb80fcffa11, type: 3}
-  description: Increases yoyo damage by 10
-  weaponData: {fileID: 11400000, guid: e9b06b41b87a1c941ba9ceb2d79429ee, type: 2}
+  Name: Barbed Arrows
+  icon: {fileID: 21300000, guid: 5976a43cc2ce9ff40a573f10dd145265, type: 3}
+  description: Increases arrow damage by 10
+  weaponData: {fileID: 11400000, guid: 240e2fddc3c801543abb08755052a1a8, type: 2}
   weaponUpgradeStats:
-    damage: 20
+    damage: 10
     amount: 0
     speed: 0
     pierce: 0
@@ -26,5 +26,4 @@ MonoBehaviour:
     attackDuration: 0
     coneAngle: 0
     coneRange: 0
-  nextUpgradeData:
-  - {fileID: 11400000, guid: 00bb0631406edc247af9fa9837b80c91, type: 2}
+  nextUpgradeData: []

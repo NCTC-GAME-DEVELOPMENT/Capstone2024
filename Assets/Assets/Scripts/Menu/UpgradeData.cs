@@ -22,4 +22,5 @@ public class UpgradeData : ScriptableObject
 
     public WeaponSO weaponData;
     public WeaponStats weaponUpgradeStats;
+    public List<UpgradeData> nextUpgradeData;
 }

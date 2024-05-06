@@ -19,7 +19,8 @@ public class WeaponManager : MonoBehaviour
     }
     private void Start()
     {
-        AddWeapon(startingWeapon);
+        if(startingWeapon != null) { AddWeapon(startingWeapon); }
+            
     }
 
    
@@ -45,5 +46,11 @@ public class WeaponManager : MonoBehaviour
     {
         WeaponBase weaponToUpgrade = weapons.Find(wd => wd.weaponData == upgradeData.weaponData);
         weaponToUpgrade.Upgrade(upgradeData);
+
+        Level level = GetComponent<Level>();
+        if (level != null)
+        {
+            level.AddAvailableUpgrades(upgradeData.nextUpgradeData);
+        }
     }
 }

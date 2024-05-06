@@ -8,7 +8,7 @@ public class ArrowWeapon : WeaponBase
     [SerializeField] GameObject arrowPrefab;
     [SerializeField] Transform wpn_Arrow;
     [SerializeField] GameObject arrowOrigin;
-    string ARROW_SPAWN = "arrow_Origin";
+    //string ARROW_SPAWN = "arrow_Origin";
     WeaponPosition weaponPosition;
 
 
@@ -49,6 +49,7 @@ public class ArrowWeapon : WeaponBase
             arrowCollider.damage = weaponStats.damage;
             arrowCollider.pierce = weaponStats.pierce;
             arrowCollider.speed = weaponStats.speed;
+            arrowCollider.attackDuration = weaponStats.attackDuration;
 
             //arcStart -= increment;
         }

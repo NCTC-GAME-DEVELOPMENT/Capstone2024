@@ -10,10 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c6d68cf0358de242a034ee4b44a2aaf, type: 3}
-  m_Name: TestUpgrade2
+  m_Name: Shield Damage 1
   m_EditorClassIdentifier: 
   upgradeType: 0
-  Name: Test 2
+  Name: 
   icon: {fileID: 0}
-  description: This is Test 2
+  description: 
   weaponData: {fileID: 0}
+  weaponUpgradeStats:
+    damage: 0
+    amount: 0
+    speed: 0
+    pierce: 0
+    cooldownDuration: 0
+    attackDuration: 0
+    coneAngle: 0
+    coneRange: 0
+  nextUpgradeData: []
