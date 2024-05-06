@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class EndPanelManager : MonoBehaviour
 {
+
+    public static EndPanelManager reference; 
+
     PauseManager pauseManager;
     GameObject panel;
     [SerializeField] GameObject winPanel;
@@ -12,6 +15,7 @@ public class EndPanelManager : MonoBehaviour
 
     private void Awake()
     {
+        reference = this; 
         pauseManager = GetComponent<PauseManager>();
     }
 

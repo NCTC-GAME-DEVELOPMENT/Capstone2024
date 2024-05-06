@@ -115,4 +115,9 @@ public class Sorceress : EnemyBase
         Quaternion targetRotation = Quaternion.LookRotation(lookAtDirection);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
+
+    public void CallWinGame()
+    {
+        EndPanelManager.reference.WinGame(); 
+    }
 }
