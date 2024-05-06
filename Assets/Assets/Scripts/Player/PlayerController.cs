@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private new Camera camera;
     [SerializeField] ExperienceBar experienceBar;
+    private AudioHandler audioHandler;
     private PostProcessVolume postProcessVolume;
     private Vignette vignette;
     private PlayerMeleeTest playerMelee;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
         timer = FindObjectOfType<Timer>();
         playerMelee = FindObjectOfType<PlayerMeleeTest>();
         levelUp = GetComponent<Level>();
+        audioHandler = GetComponent<AudioHandler>();
         postProcessVolume = camera.GetComponent<PostProcessVolume>();
         postProcessVolume.profile.TryGetSettings(out vignette);
 
@@ -165,9 +167,9 @@ public class PlayerController : MonoBehaviour
 
         timer.HardModeAdjust(false);
 
+        audioHandler.PlayerDamageSound();
         vignette.intensity.value = startIntensity;
         fadeTimer = fadeDuration;
-        //StartCoroutine(DisablePostProcessingAfterDelay());
 
         if (currentHealth <= 0 && !dead)
         {
@@ -176,13 +178,5 @@ public class PlayerController : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
             Debug.Log("Death");
         }
-    }
-    IEnumerator DisablePostProcessingAfterDelay()
-    {
-        // Wait for the effect duration
-        yield return new WaitForSeconds(1f); // Adjust as needed
-
-        // Disable the Post Process Volume to stop the effect
-        postProcessVolume.enabled = false;
     }
 }

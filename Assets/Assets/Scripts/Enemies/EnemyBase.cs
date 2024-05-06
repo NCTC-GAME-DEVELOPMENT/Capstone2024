@@ -12,6 +12,8 @@ public class EnemyBase : MonoBehaviour
     protected Animator animator;
     protected Rigidbody rb;
     protected ColorChange colorChange;
+    protected AudioHandler audioHandler;
+    [SerializeField] protected AudioClip damageSound;
     [SerializeField] protected GameObject[] xpPrefab;
 
     public bool boss = false;
@@ -48,6 +50,7 @@ public class EnemyBase : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
         playerObj = FindObjectOfType<PlayerController>().gameObject;
         colorChange = GetComponent<ColorChange>();
+        audioHandler = playerObj.GetComponent<AudioHandler>();
         health = StatsChart[StatsChartRow].health;
         contactDamage = StatsChart[StatsChartRow].contactDamage;
         damage = StatsChart[StatsChartRow].damage;
@@ -79,6 +82,7 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
+        audioHandler.EnemyDamageSound(damageSound);
         if (inPlayArea)
         {
             health -= damage;

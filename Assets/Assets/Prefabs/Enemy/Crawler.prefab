@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014b7848cb2e48f40bad3f792df8948f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageSound: {fileID: 8300000, guid: 3208ec3a821ae054fbd3cffba988d3f8, type: 3}
   xpPrefab:
   - {fileID: 6157711694175870726, guid: 9118733d3b717914f9c84b56cd0a1840, type: 3}
   - {fileID: 7466771459601227652, guid: c4f2598ac1768124fa4590e32975e4a2, type: 3}
