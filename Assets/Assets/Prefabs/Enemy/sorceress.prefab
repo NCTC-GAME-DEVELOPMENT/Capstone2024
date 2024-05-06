@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
       propertyPath: m_Name
-      value: Sorceress
+      value: sorceress
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2fdf61ec40529c94583df50f1db28d6e, type: 3}
       propertyPath: m_Layer
@@ -385,6 +385,21 @@ MonoBehaviour:
   - health: 2000
     damage: 200
     contactDamage: 80
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   summonPoints:
   - {fileID: 3269769121650280335}
   - {fileID: 8960651719909019806}
