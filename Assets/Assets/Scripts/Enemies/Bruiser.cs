@@ -113,7 +113,6 @@ public class Bruiser : EnemyBase
                 think = Idle;
             }
         }
-        transform.rotation = Quaternion.LookRotation(directionToPlayer);
     }
 
     void Idle()

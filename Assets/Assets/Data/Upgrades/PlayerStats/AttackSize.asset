@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c6d68cf0358de242a034ee4b44a2aaf, type: 3}
-  m_Name: New Upgrade Data
+  m_Name: AttackSize
   m_EditorClassIdentifier: 
-  upgradeType: 0
-  Name: 
+  upgradeType: 4
+  Name: Attack Size
   icon: {fileID: 0}
-  description: 
+  description: +10% Attack Size
   weaponData: {fileID: 0}
   weaponUpgradeStats:
     damage: 0
@@ -26,7 +26,8 @@ MonoBehaviour:
     attackDuration: 0
     coneAngle: 0
     coneRange: 0
-  nextUpgradeData: []
+  nextUpgradeData:
+  - {fileID: 11400000}
   playerUpgradeStats:
     baseHealth: 0
     maxHealth: 0
@@ -39,5 +40,5 @@ MonoBehaviour:
     damage: 0
     baseAttackSpeed: 0
     baseAttackSpeedRatio: 0
-    attackSize: 0
+    attackSize: 0.1
     moveSpeed: 0

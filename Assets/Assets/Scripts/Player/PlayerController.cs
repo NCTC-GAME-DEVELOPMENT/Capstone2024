@@ -8,9 +8,10 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private new Camera camera;
+    [SerializeField] private Camera playerCamera;
     [SerializeField] ExperienceBar experienceBar;
     [SerializeField] HpBar hpBar;
+    [SerializeField] GameObject meleePivotPoint;
     private AudioHandler audioHandler;
     private PostProcessVolume postProcessVolume;
     private Vignette vignette;
@@ -38,7 +39,6 @@ public class PlayerController : MonoBehaviour
 
     public int xp = 0;
     public int nextLevelXP = 1;
-    private int prevLevel = 1;
     public int level = 1;
 
     private float startIntensity = 0.5f;
@@ -54,13 +54,13 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        camera = Camera.main;
+        playerCamera = Camera.main;
         animator = GetComponent<Animator>();
         timer = FindObjectOfType<Timer>();
         playerMelee = FindObjectOfType<PlayerMeleeTest>();
         levelUp = GetComponent<Level>();
         audioHandler = GetComponent<AudioHandler>();
-        postProcessVolume = camera.GetComponent<PostProcessVolume>();
+        postProcessVolume = playerCamera.GetComponent<PostProcessVolume>();
         postProcessVolume.profile.TryGetSettings(out vignette);
 
         maxHealth = baseHealth;
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void MouseRotate()
     {
-        Ray ray = camera.ScreenPointToRay(mousePosition);
+        Ray ray = playerCamera.ScreenPointToRay(mousePosition);
         LayerMask groundLayerMask = LayerMask.GetMask("Ground");
         if(Physics.Raycast(ray,out RaycastHit hitInfo, maxDistance: 300f, groundLayerMask))
         {
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
         var speed = moveSpeed * Time.deltaTime;
 
-        targetVector = Quaternion.Euler(0, camera.gameObject.transform.eulerAngles.y, 0) * targetVector;
+        targetVector = Quaternion.Euler(0, playerCamera.gameObject.transform.eulerAngles.y, 0) * targetVector;
 
         var targetPosition = transform.position + targetVector * speed;
         transform.position = targetPosition;
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
     {
         baseHealth += upgradePlayerStats.baseHealth;
         maxHealth += upgradePlayerStats.maxHealth;
-        currentHealth += upgradePlayerStats.currentHealth;
+        currentHealth += upgradePlayerStats.currentHealth + upgradePlayerStats.maxHealth;
         healthRegen += upgradePlayerStats.healthRegen;
         regenTime += upgradePlayerStats.regenTime;
         flatDR += upgradePlayerStats.flatDR;
