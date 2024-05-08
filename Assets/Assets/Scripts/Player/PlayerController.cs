@@ -37,8 +37,10 @@ public class PlayerController : MonoBehaviour
 
     public float regenTimer;
 
+    public int baseXP = 5;
     public int xp = 0;
-    public int nextLevelXP = 1;
+    public int deltaXP = 1;
+    public int nextLevelXP = 3;
     public int level = 1;
 
     private float startIntensity = 0.5f;
@@ -85,11 +87,6 @@ public class PlayerController : MonoBehaviour
         
         var targetVector = new Vector3(inputVector.x, 0, inputVector.y);
 
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            playerMelee.UpdateStats();
-        }
-
         if (!dead)
         {
             MovePlayer(targetVector);
@@ -99,9 +96,43 @@ public class PlayerController : MonoBehaviour
             {                      //This shouldn't be an issue since it shouldn't be possible to have that happen past the first handful of levels.
                 levelUp.LevelUp();
                 UpdateStats();
-                xp -= nextLevelXP;
-                nextLevelXP += nextLevelXP + 1;
+                nextLevelXP = CalculateNextLevelXP(level);
+                xp = 0;
                 level++;
+                if (level % 5 == 0)
+                {
+                    switch (level)
+                    {
+                        case 5:
+                            deltaXP = 2;
+                            break;
+                        case 10:
+                            deltaXP = 3;
+                            break;
+                        case 15:
+                            deltaXP = 5;
+                            break;
+                        case 20:
+                            deltaXP = 7;
+                            break;
+                        case 25:
+                            deltaXP = 10;
+                            break;
+                        case 30:
+                            deltaXP = 15;
+                            break;
+                        case 40:
+                            deltaXP = 20;
+                            break;
+                        case 45:
+                            deltaXP = 25;
+                            break;
+                        case 50:
+                            deltaXP = 30;
+                            break;
+                    }
+                }
+
             }
 
         }
@@ -157,7 +188,7 @@ public class PlayerController : MonoBehaviour
     {
         maxHealth += 5;
         currentHealth += 5;
-        damage += 5;
+        damage += 2;
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
@@ -183,7 +214,10 @@ public class PlayerController : MonoBehaviour
 
         timer.HardModeAdjust(false);
 
-        audioHandler.PlayerDamageSound();
+        if (currentHealth > 0)
+        {
+            audioHandler.PlayerDamageSound();
+        }
         vignette.intensity.value = startIntensity;
         fadeTimer = fadeDuration;
 
@@ -191,6 +225,7 @@ public class PlayerController : MonoBehaviour
         {
             dead = true;
             animator.SetTrigger("Death");
+            audioHandler.PlayerDeathSound();
             rb.constraints = RigidbodyConstraints.FreezeAll;
             Debug.Log("Death");
             OnDeath(); 
@@ -200,6 +235,11 @@ public class PlayerController : MonoBehaviour
     public void OnDeath()
     {
         EndPanelManager.reference.LoseGame(); 
+    }
+
+    private int CalculateNextLevelXP(int level)
+    {
+        return baseXP + deltaXP * (level - 1);
     }
 
     public void UpgradeStats(PlayerStats upgradePlayerStats)
@@ -216,6 +256,8 @@ public class PlayerController : MonoBehaviour
         baseAttackSpeed += upgradePlayerStats.baseAttackSpeed;
         baseAttackSpeedRatio += upgradePlayerStats.baseAttackSpeedRatio;
         attackSize += upgradePlayerStats.attackSize;
+        Vector3 attackScale = new Vector3(attackSize, attackSize, attackSize);
+        meleePivotPoint.transform.localScale = attackScale;
         moveSpeed += upgradePlayerStats.moveSpeed;
     }
 }

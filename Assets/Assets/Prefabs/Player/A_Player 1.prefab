@@ -256,12 +256,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955c53855b979b242ac4c435e97f1fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  playerCamera: {fileID: 0}
   experienceBar: {fileID: 0}
+  hpBar: {fileID: 0}
+  meleePivotPoint: {fileID: 0}
   animator: {fileID: 0}
   baseHealth: 100
   maxHealth: 0
   currentHealth: 0
+  healthRegen: 0
+  regenTime: 5
   flatDR: 0
   percentDR: 0
   baseDamage: 5
@@ -270,7 +274,10 @@ MonoBehaviour:
   baseAttackSpeedRatio: 0
   attackSize: 1
   moveSpeed: 5
+  regenTimer: 0
+  baseXP: 5
   xp: 0
+  deltaXP: 2
   nextLevelXP: 1
   level: 1
   dead: 0
@@ -292,6 +299,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d07c1a91557dc9547b9142be00f4a458, type: 2}
   - {fileID: 11400000, guid: c6f4df3c5bf5ecd4787aab8a8ad508c8, type: 2}
   upgradePanel: {fileID: 0}
+  playerController: {fileID: 0}
   acquiredUpgrades: []
 --- !u!114 &7020434287091291378
 MonoBehaviour:
@@ -305,7 +313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3ca70c141316d4a962fd66d625c19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamage: {fileID: 8300000, guid: 04991e9ade477704897c11d519c61ffb, type: 3}
+  playerDamage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerDeath: {fileID: 0}
   playerSource: {fileID: 5636095247129639519}
   enemySource: {fileID: 4819399719955583691}
 --- !u!136 &4967562497714353693

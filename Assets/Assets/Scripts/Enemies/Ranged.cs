@@ -10,7 +10,7 @@ public class Ranged : EnemyBase
     [SerializeField] private Transform projectileSpawnPoint;
 
     private float projectileCooldown;
-    private float projectileInterval = 2.168f;
+    private float projectileInterval = 5f;
     private float projectileSpeed = 7.5f;
 
     protected override void InitializeObject()
@@ -56,6 +56,7 @@ public class Ranged : EnemyBase
             Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
             projectileRigidbody.velocity = direction * projectileSpeed;
 
+            animator.SetTrigger("isAttacking");
             projectileCooldown = Time.time + projectileInterval;
         }
         if (distanceToPlayer >= 17.5)

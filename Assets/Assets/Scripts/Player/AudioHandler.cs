@@ -1,32 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Processors;
 
 public class AudioHandler : MonoBehaviour
 {
-    [SerializeField] private AudioClip playerDamage;
+    [SerializeField] private AudioClip[] playerDamage;
+    [SerializeField] private AudioClip playerDeath;
     [SerializeField] private AudioSource playerSource;
     [SerializeField] private AudioSource enemySource;
     private bool isPlayingSoundPlayer;
     private bool isPlayingSoundEnemy;
+    private bool isDead;
     // Start is called before the first frame update
     void Start()
     {
         isPlayingSoundPlayer = false;
         isPlayingSoundEnemy = false;
+        isDead = false;
     }
 
     public void PlayerDamageSound()
     {
-        if (isPlayingSoundPlayer)
+        if (isPlayingSoundPlayer || isDead)
         {
             return;
         }
         else
         {
             isPlayingSoundPlayer = true;
-            playerSource.PlayOneShot(playerDamage);
-            Invoke("ResetPlayerSound", playerDamage.length);
+            int random = Random.Range(1, 4);
+            playerSource.PlayOneShot(playerDamage[random - 1]);
+            Invoke("ResetPlayerSound", playerDamage[random - 1].length);
         }
     }
     void ResetPlayerSound()
@@ -49,5 +54,14 @@ public class AudioHandler : MonoBehaviour
     void ResetEnemySound()
     {
         isPlayingSoundEnemy = false;
+    }
+
+    public void PlayerDeathSound()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+            playerSource.PlayOneShot(playerDeath);
+        }
     }
 }

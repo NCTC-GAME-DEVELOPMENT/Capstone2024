@@ -10,7 +10,7 @@ public class Bruiser : EnemyBase
     [SerializeField] private GameObject warningAngle;
     private EnemyAttack enemyAttack;
 
-    Vector3 directionToPlayer;
+    private Vector3 directionToPlayer;
     private float rotationSpeed = 200f;
 
     private bool windingUp = true;

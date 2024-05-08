@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -16,6 +17,7 @@ public class Timer : MonoBehaviour
     public GameObject[] enemyArray;
     public GameObject crawlerPrefab;
     public GameObject slimePrefab;
+    public GameObject zombiePrefab;
     public GameObject rangedPrefab;
     public GameObject bruiserPrefab;
     public GameObject bossPrefab;
@@ -138,143 +140,157 @@ public class Timer : MonoBehaviour
         StatsChartRow++;
         eventCount++;
         nextEvent = currentTime - 60;
-        if (eventCount == 1)
+        if (eventCount == 1) //19 Minutes
         {
 
         }
-        if (eventCount == 2)
+        if (eventCount == 2) //18 Minutes
         {
             enemyArray = new GameObject[3];
             enemyArray[0] = crawlerPrefab;
             enemyArray[1] = crawlerPrefab;
             enemyArray[2] = slimePrefab;
         }
-        if (eventCount == 3)
+        if (eventCount == 3) //17 Minutes
         {
             enemyArray = new GameObject[2];
             enemyArray[0] = crawlerPrefab;
             enemyArray[1] = slimePrefab;
             xpLevel++;
         }
-        if (eventCount == 4)
+        if (eventCount == 4) //16 Minutes
         {
             SpawnEnemy(bruiserPrefab);
             spawnTimer = 2.5f;
         }
-        if (eventCount == 5)
+        if (eventCount == 5) //15 Minutes
         {
             enemyArray = new GameObject[3];
             enemyArray[0] = crawlerPrefab;
             enemyArray[1] = slimePrefab;
-            enemyArray[2] = rangedPrefab;
+            enemyArray[2] = zombiePrefab;
         }
-        if (eventCount == 6)
+        if (eventCount == 6) //14 Minutes
+        {
+            xpLevel++;
+        }
+        if (eventCount == 7) //13 Minutes
         {
             enemyArray = new GameObject[4];
             enemyArray[0] = crawlerPrefab;
             enemyArray[1] = slimePrefab;
-            enemyArray[2] = rangedPrefab;
+            enemyArray[2] = zombiePrefab;
             enemyArray[3] = rangedPrefab;
-            xpLevel++;
         }
-        if (eventCount == 7)
-        {
-
-        }
-        if (eventCount == 8) 
+        if (eventCount == 8) //12 Minutes
         {
             SlimeEvent();
+            Invoke("SlimeEvent", 15);
+            CancelInvoke(nameof(SpawnRandomEnemy));
             spawnTimer = 2f;
         }
-        if (eventCount == 9)
+        if (eventCount == 9) //11 Minutes
         {
-            enemyArray = new GameObject[4];
+            InvokeRepeating(nameof(SpawnRandomEnemy), 0f, spawnTimer);
+            enemyArray = new GameObject[5];
             enemyArray[0] = crawlerPrefab;
             enemyArray[1] = slimePrefab;
-            enemyArray[2] = rangedPrefab;
-            enemyArray[3] = bruiserPrefab;
+            enemyArray[2] = zombiePrefab;
+            enemyArray[3] = rangedPrefab;
+            enemyArray[4] = bruiserPrefab;
             xpLevel++;
         }
-        if (eventCount == 10)
+        if (eventCount == 10) //10 Mintues
         {
 
         }
-        if (eventCount == 11)
+        if (eventCount == 11) //9 Minutes
         {
-            enemyArray = new GameObject[4];
+            enemyArray = new GameObject[5];
             enemyArray[0] = slimePrefab;
             enemyArray[1] = slimePrefab;
-            enemyArray[2] = rangedPrefab;
-            enemyArray[3] = bruiserPrefab;
+            enemyArray[2] = zombiePrefab;
+            enemyArray[3] = rangedPrefab;
+            enemyArray[4] = bruiserPrefab;
         }
-        if (eventCount == 12)
+        if (eventCount == 12) //8 Minutes
         {
-            ArcherEvent();
+            ZombieEvent();
+            CancelInvoke(nameof(SpawnRandomEnemy));
             spawnTimer = 1.5f;
             xpLevel++;
         }
-        if (eventCount == 13)
+        if (eventCount == 13) //7 Mintues
         {
-            enemyArray = new GameObject[3];
+            InvokeRepeating(nameof(SpawnRandomEnemy), 0f, spawnTimer);
+            enemyArray = new GameObject[4];
             enemyArray[0] = slimePrefab;
-            enemyArray[1] = rangedPrefab;
-            enemyArray[2] = bruiserPrefab;
+            enemyArray[1] = zombiePrefab;
+            enemyArray[2] = rangedPrefab;
+            enemyArray[3] = bruiserPrefab;
         }
-        if (eventCount == 14)
+        if (eventCount == 14) //6 Minutes
         {
             
         }
-        if (eventCount == 15)
+        if (eventCount == 15) //5 Minutes
         {
             KnightEvent();
+            CancelInvoke(nameof(SpawnRandomEnemy));
         }
-        if (eventCount == 16)
+        if (eventCount == 16) //4 Minutes
         {
+            InvokeRepeating(nameof(SpawnRandomEnemy), 0f, spawnTimer);
             spawnTimer = 1f;
         }
-        if (eventCount == 17)
+        if (eventCount == 17) //3 Minutes
         {
-            enemyArray = new GameObject[4];
+            enemyArray = new GameObject[5];
             enemyArray[0] = slimePrefab;
-            enemyArray[1] = rangedPrefab;
-            enemyArray[2] = bruiserPrefab;
+            enemyArray[1] = zombiePrefab;
+            enemyArray[2] = rangedPrefab;
             enemyArray[3] = bruiserPrefab;
+            enemyArray[4] = bruiserPrefab;
         }
-        if (eventCount == 18)
+        if (eventCount == 18) //2 Minutes
         {
             spawnTimer = 0.5f;
         }
-        if (eventCount == 19)
+        if (eventCount == 19) //1 Minute
         {
 
         }
-        if (eventCount == 20)
+        if (eventCount == 20) //Boss Time
         {
             SpawnEnemy(bossPrefab);
         }
 
         void SlimeEvent()
         {
-            for (int i = 28; i >= 0; i--)
+            for (int i = 40; i >= 0; i--)
             {
                 SpawnEnemy(slimePrefab);
             }
         }
 
-        void ArcherEvent()
+        void ZombieEvent()
         {
-            for (int i = 20; i >= 0; i--)
+            for (int i = 40; i >= 0; i--)
             {
-                SpawnEnemy(rangedPrefab);
+                SpawnEnemy(zombiePrefab);
             }
         }
 
         void KnightEvent()
         {
-            for (int i = 12; i >= 0; i--)
+            for (int i = 25; i >= 0; i--)
             {
                 SpawnEnemy(bruiserPrefab);
             }
         }
+    }
+    IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
     }
 }

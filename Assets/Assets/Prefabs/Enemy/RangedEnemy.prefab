@@ -329,66 +329,69 @@ MonoBehaviour:
   - health: 40
     damage: 5
     contactDamage: 2
-  - health: 80
-    damage: 10
+  - health: 40
+    damage: 5
+    contactDamage: 2
+  - health: 60
+    damage: 6
     contactDamage: 4
-  - health: 120
-    damage: 15
+  - health: 60
+    damage: 6
+    contactDamage: 4
+  - health: 80
+    damage: 7
     contactDamage: 6
-  - health: 160
-    damage: 20
+  - health: 80
+    damage: 7
+    contactDamage: 6
+  - health: 150
+    damage: 8
     contactDamage: 8
-  - health: 200
-    damage: 25
+  - health: 160
+    damage: 8
+    contactDamage: 8
+  - health: 170
+    damage: 9
     contactDamage: 10
+  - health: 220
+    damage: 9
+    contactDamage: 10
+  - health: 230
+    damage: 10
+    contactDamage: 12
   - health: 240
-    damage: 30
+    damage: 10
     contactDamage: 12
   - health: 280
-    damage: 35
+    damage: 11
     contactDamage: 14
-  - health: 320
-    damage: 40
+  - health: 290
+    damage: 11
+    contactDamage: 14
+  - health: 300
+    damage: 12
     contactDamage: 16
-  - health: 360
-    damage: 45
+  - health: 310
+    damage: 12
+    contactDamage: 16
+  - health: 320
+    damage: 13
     contactDamage: 18
-  - health: 400
-    damage: 50
+  - health: 330
+    damage: 13
+    contactDamage: 18
+  - health: 330
+    damage: 14
     contactDamage: 20
-  - health: 440
-    damage: 55
-    contactDamage: 22
-  - health: 480
-    damage: 60
-    contactDamage: 24
-  - health: 520
-    damage: 65
-    contactDamage: 26
-  - health: 560
-    damage: 70
-    contactDamage: 28
-  - health: 600
-    damage: 75
-    contactDamage: 30
-  - health: 640
-    damage: 80
-    contactDamage: 32
-  - health: 680
-    damage: 85
-    contactDamage: 34
-  - health: 720
-    damage: 90
-    contactDamage: 36
-  - health: 760
-    damage: 95
-    contactDamage: 38
-  - health: 800
-    damage: 100
-    contactDamage: 40
-  - health: 800
-    damage: 100
-    contactDamage: 40
+  - health: 330
+    damage: 15
+    contactDamage: 20
+  - health: 330
+    damage: 15
+    contactDamage: 20
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   projectilePrefab: {fileID: 7778122218930659235, guid: 82cce75d764a0d442ba90ba6c6f76bcc, type: 3}
   projectileSpawnPoint: {fileID: 6530125318735369808}
 --- !u!195 &3829461684611907563

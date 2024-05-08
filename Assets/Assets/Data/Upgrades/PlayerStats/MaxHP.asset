@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 4
   Name: Max HP
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3b3b76c3544cf304b81e92355b8dabc5, type: 3}
   description: Max HP +10
   weaponData: {fileID: 0}
   weaponUpgradeStats:

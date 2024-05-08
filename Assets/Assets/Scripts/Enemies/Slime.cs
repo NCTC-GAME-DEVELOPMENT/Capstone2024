@@ -10,6 +10,7 @@ using UnityEngine.AI;
 
 public class Slime : EnemyBase
 {
+    [SerializeField] private Transform raycastSpawnPoint;
     public bool hasSplit;
     public GameObject slimePool;
     private float animTime = 0.583f;
@@ -76,17 +77,13 @@ public class Slime : EnemyBase
             }
         }
 
-        /*Ray ray = camera.ScreenPointToRay(mousePosition);
-        LayerMask groundLayerMask = LayerMask.GetMask("Ground");
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f, groundLayerMask))
+        RaycastHit hit;
         {
-            var target = hitInfo.point;
-            target.y = transform.position.y;
-            transform.LookAt(target);
-        }*/
-        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        GameObject damagingCircle = Instantiate(slimePool, spawnPosition, Quaternion.identity);
-        Destroy(damagingCircle, 5f);
-
+            if (Physics.Raycast(raycastSpawnPoint.position, -Vector3.up, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
+            {
+                GameObject damagingCircle = Instantiate(slimePool, hit.point, Quaternion.identity);
+                Destroy(damagingCircle, 5f);
+            }
+        }
     }
 }

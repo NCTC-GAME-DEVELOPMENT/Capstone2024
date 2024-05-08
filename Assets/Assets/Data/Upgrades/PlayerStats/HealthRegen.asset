@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 4
   Name: Health Regen
-  icon: {fileID: 0}
-  description: +5 Health Regen
+  icon: {fileID: 21300000, guid: d460f999c87c7c34f8ff41b8f00a0b59, type: 3}
+  description: +2 Health Regen Per 5
   weaponData: {fileID: 11400000, guid: e9b06b41b87a1c941ba9ceb2d79429ee, type: 2}
   weaponUpgradeStats:
     damage: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
     baseHealth: 0
     maxHealth: 0
     currentHealth: 0
-    healthRegen: 5
+    healthRegen: 2
     regenTime: 0
     flatDR: 0
     percentDR: 0

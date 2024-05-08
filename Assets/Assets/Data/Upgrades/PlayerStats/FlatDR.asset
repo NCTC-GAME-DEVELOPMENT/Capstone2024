@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 4
   Name: Flat DR
-  icon: {fileID: 0}
-  description: +5 Flat Damage Reduction
+  icon: {fileID: 21300000, guid: f6bba9d585f57714aab52176c745e388, type: 3}
+  description: +2 Flat Damage Reduction
   weaponData: {fileID: 0}
   weaponUpgradeStats:
     damage: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
     currentHealth: 0
     healthRegen: 0
     regenTime: 0
-    flatDR: 5
+    flatDR: 2
     percentDR: 0
     baseDamage: 0
     damage: 0
